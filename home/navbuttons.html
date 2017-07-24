@@ -1,0 +1,106 @@
+  <style media="screen">
+  #furniture-subnav ul.supersections{
+    margin: 0;
+    /*padding-left: 4px;*/
+    padding: 0px 0px 4px 4px;
+    list-style-type: none;
+    color: white;
+
+  }
+  #furniture-subnav li.btnsupersection{
+    width: 100%;
+    display: inline-block;
+    padding-top: 6px;
+    line-height: 35px;
+  }
+
+  #furniture-subnav li.btnsupersection > a{
+    color: #88AB51!important;
+    opacity: 1;
+    text-decoration: none;
+    padding: 0px 0 0px 8px;
+    width: 105px;
+    display: inline-block;
+    line-height: 2.2em;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: white;
+  }
+
+#furniture-subnav li.btnsupersection > a:hover{
+  background-color:  #88AB51;
+  color: white !important;
+
+}
+
+
+  #furniture-subnav ul.btnsections{
+    padding: 0;
+    margin: 0;
+    display: inline;
+  }
+
+  #furniture-subnav li.btnsection{
+    display:inline;
+  }
+
+  #furniture-subnav li.btnsection > a{
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+    padding: 4px;
+  }
+
+</style>
+
+<div id="nav-btns" layout="row" style="padding-top:2px;padding-bottom:2px;">
+  <div flex="33" class="md-whiteframe-4dp nav-btn" id="furniture-btn" ng-click="showFurnitureSubNav()">
+    <div layout="row" layout-align="end end" class="nav-btn-text"><span>Furniture<br /><small><small>& more</small></small></span></div>
+    <img src="images/btn_furniture.jpg" />
+  </div>
+  <div flex="67" class="subnav md-whiteframe-4dp" id="furniture-subnav" layout="column" layout-align="center">
+    <ul class="supersections" span=10px>
+      @foreach($supersections as $supersection)
+        <li class="btnsupersection">
+          <a href="#/itemlist?supersection={{rawurlencode($supersection->name)}}">{{$supersection->name}}</a>
+          <ul class="btnsections" span=90px>
+            @foreach($supersection->sections as $section)
+            <li class="btnsection"><a href="#/itemlist?section={{rawurlencode($section->name)}}">{{$section->name}}<a/></li>
+            @endforeach
+          </ul>
+        </li>
+      @endforeach
+    </ul>
+  </div>
+
+  <div flex="67" class="subnav" id="package-subnav" layout="row" style="padding:1px;">
+    <div flex="20" class="md-whiteframe-2dp subnav-btn" layout="column" layout-align="center center" style="background-color:silver;margin:0 4px 0 0;" ng-click="gotoPackages('Silver')">
+      <div class="md-caption">A minimalist?</div><br />
+      <div class="md-title">Silver</div>
+    </div>
+    <div flex="20" class="md-whiteframe-2dp subnav-btn" layout="column" layout-align="center center" style="background-color:#D4AF37;margin:0 4px;" ng-click="gotoPackages('Gold')">
+      <div class="md-caption">Little extra?</div><br />
+      <div class="md-title">Gold</div>
+    </div>
+    <div flex="20" class="md-whiteframe-2dp subnav-btn" layout="column" layout-align="center center" style="background-color:#E6E2E2;margin:0 4px;" ng-click="gotoPackages('Platinum')">
+      <div class="md-caption">Something grand?</div><br />
+      <div class="md-title">Platinum</div>
+    </div>
+    <div flex="40" class="md-whiteframe-2dp" layout="column" layout-padding layout-align="center center" style="margin:0 0 0 4px;"><div class="md-content" style="text-align:justify;font-size:small">Dive into any category that suits you and browse a list of carefully crafted international designs.</div></div>
+  </div>
+  <div flex="33" class="md-whiteframe-4dp nav-btn" id="package-btn" ng-click="showPackageSubNav()">
+    <div layout="row" layout-align="end end" class="nav-btn-text"><span>Packages</span></div>
+    <img src="images/btn_package1.jpg" />
+  </div>
+
+  <div flex="33" class="md-whiteframe-4dp nav-btn"  id="more-btn" ng-click="exploreTovideo()">
+    <div layout="row" layout-align="end end" class="nav-btn-text"><span>Explore<br /><small><small><i class="material-icons">expand_more</i></small></small></span></div>
+    <img src="images/btn_explore.jpg" />
+  </div>
+
+
+
+</div>

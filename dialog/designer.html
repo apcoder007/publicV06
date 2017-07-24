@@ -1,0 +1,40 @@
+<div class="popup-content" ng-controller="RequestCtrl">
+  <md-toolbar class="md-primary">
+    <div class="md-toolbar-tools">
+        <h5 class="md-subhead">Book a designer<br /><small>Submit this form to get a callback from our design expert</small></h5>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="close()">
+          <md-icon class="material-icons" aria-label="Close dialog">clear</md-icon>
+        </md-button>
+      </div>
+  </md-toolbar>
+  <md-content>
+    <div ng-show="requested" class="md-body-1">Thanks for your interest. Our design expert will call you back shortly.</div>
+    <form name="designerRequestForm" ng-submit="request.designer()" ng-show="!requested" novalidate>
+      <div layout="row">
+        <md-input-container flex>
+          <input type="text" name="name" ng-model="designer.name" placeholder="Name" autofocus required />
+          <span class="error" ng-if="!designerRequestForm.name.$valid && (designerRequestForm.name.$touched || designerRequestForm.$submitted)">Name is required</span>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container class="first" flex>
+          <input type="email" required name="email" ng-model="designer.email" placeholder="email" />
+          <span class="error" ng-if="!designerRequestForm.email.$valid && (designerRequestForm.email.$touched || designerRequestForm.$submitted)">Provide a valid email</span>
+        </md-input-container>
+        <md-input-container class="second" flex>
+          <input type="text" name="mobile" ng-model="designer.mobile" placeholder="Mobile" required pattern="[1-9][0-9]{9}" />
+          <span class="error" ng-if="!designerRequestForm.mobile.$valid && (designerRequestForm.mobile.$touched || designerRequestForm.$submitted)">Please enter 10 digit mobile number</span>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex>
+          <textarea ng-model="designer.description" placeholder="Say some words. It helps us serving you faster" rows="3"></textarea>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-button class="md-raised md-primary" type="submit" ng-disabled="!designerRequestForm.$valid">Submit</md-button>
+      </div>
+    </form>
+  </md-content>
+</div>

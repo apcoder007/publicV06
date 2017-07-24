@@ -1,0 +1,55 @@
+<div layout="row" layout-align="center" >
+  <div class="container">
+
+    @include('order.progressivebar')
+
+    <div class="order-address row" sizeofwindow>
+      <div class="column-50 left">
+        <form layout="column" ng-submit="cart.checkout()" >
+          <div class="address">
+            <h4>Delivery address</h4>
+            <input type="text" id="name" name="name" ng-model="order.shipping.name" ng-class="{'error': errors.shipping.name}" placeholder="  Full Name ">
+            <input type="text"  type="text" id="mobile" name="mobile" ng-model="order.shipping.mobile" ng-class="{'error': errors.shipping.mobile}" placeholder="  Phone ">
+            <input type="text"  id="email" name="email" ng-model="order.shipping.email"  ng-class="{'error': errors.shipping.email}" placeholder="  Email ">
+            <textarea id="address" name="address" ng-model="order.shipping.address"  ng-class="{'error': errors.shipping.address}" placeholder="Address"></textarea>
+            <div layout="row" class="city-state">
+              <input type="text" id="city" name="city" ng-model="order.shipping.city" ng-class="{'error': errors.shipping.city}" placeholder="City" >
+              <div flex="10"></div>
+              <input type="text" id="state" name="state" ng-model="order.shipping.state" ng-class="{'error': errors.shipping.state}" placeholder="State" >
+            </div>
+            <input type="text" id="PIN" name="PIN" ng-model="order.shipping.pin"  ng-class="{'error': errors.shipping.pin}" placeholder="Pin" >
+          </div>
+        </form>
+
+      </div>
+      <div class="column-50 right">
+        <form layout="column" ng-submit="cart.checkout()" novalidate>
+          <div class="address">
+            <h4>Billing Address</h4>
+            <div layout= "row" class="check-box">
+              <input type="checkbox" ng-model="shippingIsSameAsBilling"  />
+              <label></label>
+              <span>Same as Delivery Address</span>
+            </div>
+
+            <input type="text" id="name" name="name" ng-model="order.billing.name" ng-disabled="shippingIsSameAsBilling" ng-class="{'error': errors.billing.name}" placeholder=" Full Name ">
+            <input type="text"  type="text" id="mobile" name="mobile" ng-model="order.billing.mobile" ng-disabled="shippingIsSameAsBilling" ng-class="{'error': errors.billing.mobile}" placeholder="  Phone ">
+            <input type="text"  id="email" name="email" ng-model="order.billing.email" ng-disabled="shippingIsSameAsBilling" ng-class="{'error': errors.billing.email}" placeholder="  Email ">
+            <textarea id="address" name="address" ng-model="order.billing.address"  ng-disabled="shippingIsSameAsBilling" ng-class="{'error': errors.billing.address}" placeholder="Address"></textarea>
+            <div layout="row" class="city-state">
+              <input type="text" id="city" name="city" ng-model="order.billing.city" ng-disabled="shippingIsSameAsBilling" ng-class="{'error': errors.billing.city}" placeholder="City" >
+              <div flex="10"></div>
+              <input type="text" id="state" name="state" ng-model="order.billing.state" ng-disabled="shippingIsSameAsBilling" ng-class="{'error': errors.billing.state}" placeholder="State" >
+            </div>
+            <input type="text" id="PIN" name="PIN" ng-model="order.billing.pin"  ng-disabled="shippingIsSameAsBilling" ng-class="{'error': errors.billing.pin}" placeholder="Pin" >
+
+        </div>
+        </form>
+      </div>
+    </div>
+    <div class="page-actions">
+      <button class="primary" ng-click="goCart()">Back to cart</button>
+      <button class="secondary" ng-click="cart.checkout()">Confirm & Pay</button>
+    </div>
+  </div>
+</div>

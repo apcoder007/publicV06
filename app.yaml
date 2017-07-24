@@ -1,0 +1,151 @@
+# application: publicv04
+# version: alpha1
+# runtime: python27
+# threadsafe: true
+# api_version: 1
+
+application: publicv02
+version: alpha
+runtime: python27
+threadsafe: true
+api_version: 1
+
+handlers:
+
+
+- url: /rest/.*
+  script: main.APP
+
+- url: /
+  static_files: index.html
+  upload: index\.html
+
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /js
+  static_dir: js
+
+- url: /css
+  static_dir: css
+
+- url: /images
+  static_dir: images
+
+- url: /images/new
+  static_dir: images/new
+
+- url: /images/icons
+  static_dir: images/icons
+
+- url: /general
+  static_dir: images/general
+
+- url: /aboutuspage
+  static_dir: images/aboutuspage
+
+- url: /media
+  static_dir: images/media
+
+- url: /style
+  static_dir: images/style
+
+- url: /logo
+  static_dir: images/logo
+
+- url: /home
+  static_dir: home
+
+- url: /contact
+  static_dir: contact
+
+- url: /locations
+  static_dir: locations
+
+- url: /order
+  static_dir: order
+
+- url: /projects
+  static_dir: projects
+
+- url: /packages
+  static_dir: packages
+
+- url: /panorama
+  static_dir: panorama
+
+- url: /user
+  static_dir: user
+
+- url: /header
+  static_dir: header
+
+- url: /public
+  static_dir: public
+
+- url: /backend
+  static_dir: backend
+
+- url: /data
+  static_dir: public/data
+
+- url: /@images/success_stories
+  static_dir: images/success_stories
+
+- url: /items
+  static_dir: items
+
+- url: /backend
+  static_dir: backend
+
+- url: /views
+  static_dir: views
+
+- url: /header
+  static_dir: header
+
+- url: /angular-material
+  static_dir: node_modules/angular-material
+
+- url: /angularjs-slider
+  static_dir: node_modules/angularjs-slider/dist
+
+- url: /angular-route
+  static_dir: node_modules/angular-route
+
+- url: /angular-aria
+  static_dir: node_modules/angular-aria
+
+- url: /angular
+  static_dir: node_modules/angular
+
+- url: /jquery
+  static_dir: node_modules/jquery/dist
+
+- url: /angular-animate
+  static_dir: node_modules/angular-animate
+
+- url: /ng-infinite-scroll
+  static_dir: node_modules/ng-infinite-scroll/build
+
+
+- url: /api/.*
+  script: api.app
+
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+
+- name: jinja2
+  version: latest
+  
+- name: pycrypto
+  version: "2.6"
+
+
+inbound_services:
+- warmup
+
+

@@ -1,0 +1,91 @@
+<link rel="stylesheet" type="text/css" href="css/home.css">
+
+<div layout="row" layout-align="center">
+  <div class="enlargeimage" layout="column" layout-align="center"  ng-class="{'displaynon': enlargeimagev}" >
+    <!-- <img class = "enlarg" ng-src="pro_paths"/> -->
+    <img src="images/icons/unmax.png" ng-click="smallimages()" style="cursor: pointer;position:fixed;top: 80px;right: 5px;width: 55px;background: rgba(255, 255, 255, 0.5);padding: 5px;border-radius: 20px;" />
+  </div>
+
+  <div class="container" layout="column">
+    <!-- @include('projects.projectprogress') -->
+    <div ng-include='"projects/projectprogress.html"'></div>
+    <div>
+      <ul class="page-menu compact"   style = "padding-bottom:5px" ng-if = "lengthproj > 1" >
+        <li ng-repeat = "(key, value)  in timelines"  style="margin-left:5px">
+          <a class="button" href="" ng-class="{'active':selectedproj === key}" ng-click ="setKey(key)">
+                  {{key}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div ng-repeat = "(key, timeline) in timelines ">
+      <div ng-if="key == projectkey" >
+        <div id="project_details"  ng-repeat = "(key, value)  in timeline  ">
+          <div class="date">
+              {{key}}
+          </div>
+          <div class="outerdiv" ng-repeat = "(timelinekey, timelinevalue) in value | orderBy : timelinekey : true"style="padding-top:10px;">
+            <div layout-gt-xs="row" layout-xs="column"  style="padding-top:10px;padding-bottom:10px">
+              
+              <div layout="column" class="divproject-60">
+                <div  ng-repeat = "timelinevl in timelinevalue ">
+                  
+                  <div layout="column" ng-if="timelinevl.type == 'IMAGE'">
+                    <div class="project_image">
+                      <img ng-src="{{pro_paths+'/'+timelinevl['path']}}" ng-click = "imageenlarge(timelinevl['path'])" />
+                    </div>
+                  </div>
+
+                  <div layout="column" ng-if="timelinevl.type == 'PANORAMA'">
+                    <div class="project_image">
+                      <a target="_blank" href="/#!/panorama/view?filename={{timelinevl['path']}}">
+                        <img ng-src="{{pro_paths+'/'+panoramathumbnail+'/'+timelinevl['path']}}" />
+                      </a>
+                    </div>
+                  </div>
+
+                  </div>
+                </div>
+
+                <div layout="column" class="divproject-40">
+
+                  <div ng-repeat = "timelinevl in timelinevalue">
+                    <div layout="column" ng-show="timelinevl.type == 'PDF'" style="padding-bottom:10px;">
+                      <a href="{{pro_paths+'/'+timelinevl['path']}}">Open the pdf!</a>
+                    </div>
+                  </div>
+
+                  <div layout="column" class= "timecomment">
+                    <div style="width:100%;  background-color: #515970;" >
+                      <span>Remarks </span>
+                    </div>
+                        <p> {{timelinevalue[0].message}} </p>
+                  </div>
+
+                  <div class="projectcommets" ng-if= "commentshas(timelinekey)">
+                   <div class="commentsnew" ng-repeat =  "coment in comments[timelinekey]">
+                     <p style="padding:0px 10px ">{{coment.comment}}</p>
+                     <div layout="row">
+                        <div class="name" style="float:left">
+                        </div>
+                        <div class="timestamp" style="float:right">
+                            {{coment.name}} {{coment.time}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <form  ng-submit="projecttimelinecomment(timeline.Comment[timelinekey],timelinekey)" name="CommentForm"  >
+                    <textarea id="comment" name="comment" ng-model="timeline.Comment[timelinekey]"  placeholder="Comment"></textarea>
+                    <button style="margin-top:10px;float:right;margin-right:10px" class="secondary subbutton" type="submit" name="button">Submit</button>
+                  </form>
+
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+
+      </div>
+    </div>
+  </div>

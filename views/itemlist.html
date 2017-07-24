@@ -1,0 +1,306 @@
+<div class="container">
+
+  <div id="control-div" layout="row" ng-cloak>
+    <div id="sorter" layout="row" layout-align="start end">
+      <span>Sort by:</span>
+      <button ng-click="reverse=false; order_by='sp';" ng-class= "{'primary' : order_by=='sp' && !reverse}">Low Price</button >
+      <button ng-click="reverse=true; order_by='sp';"  ng-class= "{'primary' : order_by=='sp' && reverse}">High Price</button >
+    </div>
+    <div flex></div>
+    <div id="slider">
+      <span>Price Range</span>
+      <rzslider rz-slider-options="filter.price.options" rz-slider-model="filter.price.min" rz-slider-high="filter.price.max"></rzslider>
+    </div>
+  </div>
+
+
+  <div id="items" ng-cloak layout-xs="column" layout-align-xs="center center">
+    <div class="item" ng-repeat="item in items | filter: filterItems | orderBy : order_by : reverse | limitTo: limit" ng-class="{middle: $index%3==1}">
+
+      <div class="image-wrapper">
+        <img ng-src="{{paths}}/medium/{{item.images[0]}}" imageonload/>
+        <div class="backdrop">
+          <div class="item-fav" ng-click="bookmark.item(item)" ng-class="{active: bookmark.item_ids.indexOf(item.id) > -1}" >
+            <img src="images/2@2x.png"  />
+          </div>
+          <div class="item-actions" layout="column" layout-align="center center">
+            <a href="/#!/product/{{item.url}}" class="button primary">Quick View</a>
+            <button class="secondary" ng-click="cart.toggleItem(item)" ng-class="{active: cart.item_ids.indexOf(item.id) > -1}" >Add to cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="info" layout="row">
+        <div layout="column" flex="75">
+          <div class="name">{{item.name}}</div>
+          <div class ="descrip"> {{item.description}}</div>
+        </div>
+
+        <div class="price" layout="column"  flex="25">
+          <span class="mrp">{{item.mrp > 0 ? (item.mrp | currency:"₹ ":0) : 'N.A'}} </span>
+          <span class="sp">{{item.sp > 0 ? (item.sp  | currency:"₹ ":0) : 'N.A'}}</span>
+        </div>
+      </div>
+
+    </div>
+    <button class="primary" ng-click="loadMore()">Show More</div>
+  </div>
+
+</div>
+
+
+
+<style media="screen">
+#control-div{
+  margin: 21px 0;
+}
+#sorter{
+  margin-bottom: 8px;
+}
+
+#slider > span{
+  font-family: Helvetica;
+  font-size: 16px;
+  font-weight: bold;
+  color: #bbbdbf;
+  text-transform: uppercase;
+}
+.rzslider .rz-bar.rz-selection{
+  background-color: #a70429;
+}
+.rzslider .rz-bar{
+  height: 8px;
+  background-color: #ededed;
+}
+.rzslider .rz-pointer{
+  top: -6px;
+  background-color: #515970;
+  width: 20px;
+  height: 20px;
+}
+.rzslider .rz-pointer::after{
+  display: none;
+}
+.rzslider .rz-bubble.rz-limit{
+  font-size: 16px;
+  font-weight: bold;
+  color: #bbbdbf;
+}
+.rzslider .rz-bubble.rz-limit.rz-floor, .rzslider .rz-bubble.rz-limit.rz-ceil{
+  display: none;
+}
+
+#sorter > span{
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: bold;
+  color: #bbbdbf;
+  line-height: 1.9;
+  padding-right: 10px;
+}
+
+
+#items{
+  border-radius: 3px;
+  margin-bottom: 100px;
+}
+#items > button{
+  width: 100%;
+  height: 50px;
+}
+#items .item{
+  position: relative;
+
+  float:left;
+  margin-bottom: 57px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 2px #f2f2f3;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
+  height: 0;
+
+}
+
+#items .item .image-wrapper{
+  cursor: pointer;
+  position: absolute;
+  background-image:url("/images/712.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 3px;
+  top: 0;
+  bottom: 90px;
+  margin: auto;
+  right: 0;
+  left: 0;
+}
+/*#items .item:before{
+  content: '';
+  display: block;
+  padding-top: 100%;
+}*/
+#items .item .image-wrapper > img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  opacity: 0.9;
+  cursor: pointer;
+  border-radius: 3px;
+}
+#items .item .image-wrapper:hover img{
+  opacity: 1;
+}
+#items .item .info{
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  padding: 15px 5px 30px 5px;
+}
+#items .item .info .name{
+  font-weight: bold;
+  height: 43px;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #3e342e;
+  padding: 0px 5px 0px 5px;
+}
+
+#items .item .info .price{
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+#items .item .info .price span.mrp{
+  padding-right: 8px;
+  padding-bottom: 8px;
+  text-decoration: line-through;
+  font-size: 14px;
+  text-align: center;
+  color: #a4a4a6;
+  font-weight: bold;
+}
+#items .item .info .price span.sp{
+  padding-right: 8px;
+
+  font-size: 14px;
+  text-align: center;
+  color: #a70429;
+  font-weight: bold;
+}
+
+
+#items .item .buttons{
+  position:absolute;
+  bottom: 7px;
+  right: 7px;
+}
+#items .item:hover .buttons{
+  bottom: 7px;
+  right: 7px;
+}
+#items .item .buttons img{
+  width: 0;
+  opacity: 0;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+#items .item:hover .buttons img{
+  width: 20px;
+  opacity: 1;
+}
+#items .item .buttons img.active{
+  background-color: #362e28;
+  opacity: 1;
+  width: 20px;
+  border-radius: 50%;
+  padding: 1px;
+}
+
+#items .item.ng-move,
+#items .item.ng-enter,
+#items .item.ng-leave {
+  transition:all 1s;
+}
+
+#items .item.ng-leave.ng-leave-active,
+#items .item.ng-move,
+#items .item.ng-enter {
+  opacity:0;
+  max-height:0;
+  overflow: hidden;
+}
+
+#items .item.ng-leave,
+#items .item.ng-move.ng-move-active,
+#items .item.ng-enter.ng-enter-active {
+  opacity:1;
+  max-height:35vw;
+  overflow: hidden;
+}
+
+#items .item .image-wrapper .backdrop{
+  top: 0;
+  position: absolute;
+  border-radius: 3px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(62, 52, 46, 0.8);
+  z-index: -1;
+  opacity: 0;
+  cursor: default;
+  transition: all 0.3s;
+}
+#items .item .image-wrapper:hover .backdrop{
+  opacity: 1;
+  z-index: 1000;
+}
+
+.descrip{
+  font-size: 11px;
+  color: #454545;
+}
+
+.item-fav{
+  background-color: #d8d8d8;
+  cursor: pointer;
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  border-radius: 50%;
+  padding: 12px 9px 8px 11px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+.item-fav.active{
+  background-color: #ff425a;
+}
+
+.item-fav img{
+  height: 14px;
+}
+
+.backdrop > .item-actions{
+  height: 100%;
+}
+.backdrop > .item-actions > button{
+  width: 150px;
+  height: 40px;
+  margin: 18px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+.backdrop > .item-actions > a.button{
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+  margin: 18px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+.backdrop > .item-actions > button.active::after{
+  border-width: 3px;
+  width: 6px;
+  height: 14px;
+  right: 12px;
+  top: 9px;
+}
+</style>
+

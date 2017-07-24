@@ -1,0 +1,178 @@
+<div id="header" ng-cloak ng-class="{'white-header': true}">
+  <div  class="container vertical-center"  ng-class="{'full-width': package_header}">
+    <a id="brand" href="#!/">
+      <!-- <img src ="images/logo/logo_1.png" ng-show="is_internal_page" />
+      <img src ="images/logo/logo_black.png" ng-show="!is_internal_page" /> -->
+      <img src="/logo/text.png" alt="" ng-show="true" class="logo-text" />
+      <!-- <img src="images/logo/text_white_1.png" alt="" ng-show="is_internal_page" class="logo-text" /> -->
+      <img src="logo/logo_blank.png" alt="" class="logo" />
+    </a>
+    <ul id="top-nav">
+      <li ><a href="/#!/">Home</a></li>
+      <li><a href="#!/packages/Bedrooms">Rooms</a></li>
+
+
+      <!--<li><a href="http://magazine.cafeindica.co.in/" target="_blank" >Blog</a></li>-->
+      <!-- <li><a href="#!/endorsements" target="_blank" >Endorsements</a></li> -->
+      <li class="topnav-item">
+        <span class="topnav-btn-text">Products</span>
+        
+        <div ng-include='"header/megamenu.html"'></div>
+
+      </li>
+      <li><a href="#!/locations">Projects</a></li>
+      
+    </ul>
+
+    <div class="right">
+      <div class="auth">
+        <div ng-click="login_window = !login_window"  ng-hide="is_logged_in">Login</div>
+        <div ng-show="is_logged_in" class="user-name" ng-click="show_controls=!show_controls">
+          <div>{{user[0].name.split(" ")[0]}}</div>
+          <div class="material-icons" ng-hide="show_controls">arrow_drop_down</div>
+          <div class="material-icons" ng-show="show_controls">arrow_drop_up</div>
+
+          <ul ng-show="show_controls">
+            <li><a href="/#!/user/logout">Logout</a></li>
+            <li ng-show="project"><a href="/#!/projects/home">My Home</a></li>
+            <li ng-show = "user[0].state"><a href="/user/change/password">Change Password</a></li>
+            <li ng-hide = "user[0].state"><a href="/user/set/password">Set Password</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="header-icons">
+        <div ng-click="goTowishlist()">
+          <md-tooltip md-direction="top" ng-if="bookmark.items.length + bookmark.packages.length == 0" id="tooltip">No items</md-tooltip>
+          <img src="general/2@2x.png"/>
+          <div class="topnotification" ng-if="bookmark.items.length + bookmark.packages.length != 0" >
+            <span>@{{bookmark.items.length + bookmark.packages.length}}</span>
+          </div>
+        </div>
+
+        <div ng-click="goCart()">
+          <md-tooltip md-direction="top" ng-if="cart.items.length + cart.packages.length == 0" id="tooltip">No items</md-tooltip>
+          <img src="/general/icons-cart@2x.png" />
+          <div class="topnotification"  ng-click="toggleCart()" ng-if="cart.items.length + cart.packages.length != 0" >@{{cart.items.length + cart.packages.length}}</div>
+        </div>
+
+
+        <div >
+          <div class="notifies">
+            <i class="material-icons" style="font-size:26px;color:#fff; position:absolute; left:5px; top:4px;">notifications</i>
+            <!-- <span id="notification_count">3</span> -->
+          </div>
+          <div class="cardmenulist">
+            <!-- <div class="titlebar">
+              <span class="title">Notification</span>
+            </div> -->
+           <!--  <md-card class="info" stat="Finished" md-theme-watch="" style="display: flex;">
+              <md-card-title class="text-pad" style="height: 100px">
+                <md-card-title-media class="img-margin">
+                  <div class="md-media-lg card-media" ng-click="projectShow(6)" role="button" style="padding: 5px 0">
+                    <img src="//s3-us-west-2.amazonaws.com/thisisnotarandomstringinfactnoneis/project/9_6_1484812135ah1e.jpeg" style="cursor:pointer; width:100px; height:100px">
+                  </div>
+                </md-card-title-media>
+                <md-card-title-text style="position: relative; left: -29px; top: 19px;">
+                  <span class="md-headline" style="font-size: 14px">Kumar Saurav Share a link</span>
+                  <span class="md-subhead"><i class="material-icons">star 7 minutes ago</i>3 minutes ago</span>
+                </md-card-title-text>
+              </md-card-title>
+            </md-card> -->
+            <!-- <md-card class="info" stat="Finished" md-theme-watch="" style="display: flex;">
+              <md-card-title class="text-pad" style="height: 100px">
+                <md-card-title-media class="img-margin">
+                  <div class="md-media-lg card-media" ng-click="projectShow(6)" role="button" style="padding: 5px 0">
+                    <img src="//s3-us-west-2.amazonaws.com/thisisnotarandomstringinfactnoneis/project/9_6_1484812135ah1e.jpeg" style="cursor:pointer; width:100px; height:100px">
+                  </div>
+                </md-card-title-media>
+                <md-card-title-text style="position: relative; left: -29px; top: 19px;">
+                  <span class="md-headline" style="font-size: 14px">Kumar Saurav Share a link</span>
+                  <span class="md-subhead"><i class="material-icons">star 7 minutes ago</i>3 minutes ago</span>
+                </md-card-title-text>
+              </md-card-title>
+            </md-card> -->
+            <!-- <md-card class="info" stat="Finished" md-theme-watch="" style="display: flex;">
+              <md-card-title class="text-pad" style="height: 100px">
+                <md-card-title-media class="img-margin">
+                  <div class="md-media-lg card-media" ng-click="projectShow(6)" role="button" style="padding: 5px 0">
+                    <img src="//s3-us-west-2.amazonaws.com/thisisnotarandomstringinfactnoneis/project/9_6_1484812135ah1e.jpeg" style="cursor:pointer; width:100px; height:100px">
+                  </div>
+                </md-card-title-media>
+                <md-card-title-text style="position: relative; left: -29px; top: 19px;">
+                  <span class="md-headline" style="font-size: 14px">Kumar Saurav Share a link</span>
+                  <span class="md-subhead"><i class="material-icons">star  7 minutes ago<</i>3 minutes ago</span>
+                </md-card-title-text>
+              </md-card-title>
+            </md-card> -->
+
+            <!-- <div class="return bottom">
+              <a class="Checkout" href="Show All">Show All</a>
+            </div> -->
+          </div>
+        </div>
+
+        <!-- <div class="listview" ng-click="show_lists=!show_lists">
+          <i class="material-icons">list</i>
+
+        </div> -->
+
+      </div>
+    </div>
+    <div ng-show="show_lists" class="header-list">
+    <ul >
+      <li ><a href="packages/Bedrooms" >Rooms</a></li>
+      <li><a href="/#!/itemlist?supersection=Furniture">Furniture</a></li>
+      <li><a href="/#!/itemlist?supersection=Home%20D%C3%A9cor">Home Décor</a></li>
+      <li><a href="/#!/itemlist?supersection=Furnishings">Furnishings</a></li>
+      <li><a href="locations">Projects</a></li>
+      <li><a href="http://magazine.cafeindica.co.in/" target="_blank" >Blog</a></li>
+      <li><a href="/#!/about">About us</a></li>
+      <li ng-click="login_window = !login_window ; show_lists=!show_lists"  ng-hide="is_logged_in" style="cursor:pointer">Login</li>
+      <li ng-show="project"><a href="/#!/projects/home">My Home</a></li>
+      <li ng-show="is_logged_in"><a href="/#!/user/logout">Logout</a></li>
+
+    </ul>
+
+  </div>
+
+  </div>
+</div>
+
+<div ng-include='"header/login.html"'></div>
+
+<script type="text/javascript">
+  $('#megamenu a').click(function(){
+    setTimeout(hideMegaMenu, 100);
+  });
+
+  $('.topnav-item').mouseleave(function(){
+    hideMegaMenu();
+  });
+  $('.topnav-item').mouseenter(function(){
+    showMegaMenu();
+  });
+
+  function showMegaMenu(){
+    $('#megamenu').css('height', '57px');
+    $('#megamenu').css('overflow', 'visible');
+  }
+
+  function hideMegaMenu(){
+    $('#megamenu').css('height', '0');
+    $('#megamenu').css('overflow', 'hidden');
+  }
+</script>
+
+<!-- <script type="text/javascript">
+$(document).ready(function(){
+  $('.notifies').click(function(){
+    $('.cardmenulist').toggle("slow");
+  });
+  $('.notifies').mouseleave(function(){
+    $('#notification_count').show();
+  });
+
+});
+</script> -->
+

@@ -1,0 +1,34 @@
+<div class="container" ng-cloak>
+  <div class="page-heading">
+    <!--<div class="title">@{{key}}</div>-->
+  </div>
+
+  <ul class="page-menu">
+    <li ng-repeat = "subhead in subheads">
+      <a href="#!/packages/{{subhead['urlview']}}" class="button" ng-class="{'active':selectedTab === subhead['urlname']}">{{subhead['urlname']}}</a>
+    </li>
+  </ul>
+
+
+
+  <div class="row with-margin margin-10-30 packages">
+    <div class="col-50" ng-repeat="pack in packages">
+
+      <a ng-show="pack.category" href="#!/package/{{pack.category}}/{{pack.url}}" class="image-wrapper">
+        <img ng-src="{{paths}}/medium/{{pack.images.split(',')[0]}}" />
+      </a>
+      <a ng-hide="pack.category" href="#!/package/{{pack.category}}/{{pack.url}}"  class="image-wrapper">
+
+        <img ng-src="{{paths}}/medium/{{pack.images.split(',')[0]}}" />
+      </a>
+      <div  class ="row info">
+        <div>
+          <div class="title">{{pack.name}}</div>
+          <div hide-xs hide-sm show-gt-sm class = "description"> {{pack.description}}</div>
+        </div>
+        <div class="price">Rs  {{pack.price}} /-</div>
+          <div show-xs show-sm hide-gt-sm class = "description"> {{pack.description}}</div>
+      </div>
+    </div>
+  </div>
+</div>

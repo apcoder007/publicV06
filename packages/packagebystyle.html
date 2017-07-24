@@ -1,0 +1,34 @@
+<div class="container" ng-cloak>
+  <div class="page-heading">
+    <div class="title">Styles</div>
+  </div>
+
+  <ul class="page-menu compact">
+    <li><a class="button" href="/#!/packagestyle/Contemporary" ng-class="{'active':selectedTab === 'Contemporary'}">Contemporary</a></li>
+    <li><a class="button" href="/#!/packagestyle/Classic" ng-class="{'active':selectedTab === 'Classic'}">Classic</a></li>
+    <li><a class="button" href="/#!/packagestyle/Vintage" ng-class="{'active':selectedTab === 'Vintage'}">Vintage</a></li>
+    <li><a class="button" href="/#!/packagestyle/Country" ng-class="{'active':selectedTab === 'Country'}">Country</a></li>
+    <li><a class="button" href="/#!/packagestyle/Rustic" ng-class="{'active':selectedTab === 'Rustic'}">Rustic</a></li>
+    <li><a class="button" href="/#!/packagestyle/Scandinavian" ng-class="{'active':selectedTab === 'Scandinavian'}">Scandinavian</a></li>
+    <li><a class="button" href="/#!/packagestyle/Modern" ng-class="{'active':selectedTab === 'Modern'}">Modern </a></li>
+    <li><a class="button" href="/#!/packagestyle/Mid-century" ng-class="{'active':selectedTab === 'Mid-century'}">Mid century </a></li>
+    <li><a class="button" href="/#!/packagestyle/French" ng-class="{'active':selectedTab === 'French'}">French</a></li>
+  </ul>
+
+  <div class="row with-margin margin-10-30 packages">
+    <div class="col-50" ng-repeat="pack in packages_style">
+
+      <a href="package/{{pack.url}}" class="image-wrapper">
+        <img ng-src="{{paths}}/medium/{{pack.images.split(',')[0]}}"/>
+      </a>
+      <div  class ="row info">
+        <div>
+          <div class="title">{{pack.name}}</div>
+          <div hide-xs hide-sm show-gt-sm class = "description"> {{pack.description}}</div>
+        </div>
+        <div class="price">Rs  {{pack.price}} /-</div>
+          <div show-xs show-sm hide-gt-sm class = "description"> {{pack.description}}</div>
+      </div>
+    </div>
+  </div>
+</div>

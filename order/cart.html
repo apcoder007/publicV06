@@ -1,0 +1,141 @@
+<div layout="row" layout-align="center" >
+  <div class="container">
+
+    <!-- @include('order.progressivebar') -->
+    <div ng-include='"order/progressivebar.html"'></div>
+
+    <div id="cart" hide-xs >
+      <div layout="row" class="header">
+        <div class="image-wrapper"></div>
+        <div class="cart-item " flex ="60">Items</div>
+        <div class="cart-quantity text-center" flex="20">Quantity</div>
+        <div class="cart-amount text-center" flex="20">Amount</div>
+      </div>
+      <div class="cart-content">
+        <div layout="row" layout-align="center center" ng-repeat="package in cart.packages">
+          <div class="image-wrapper" ng-click="showPackage(package)">
+            <div>
+              <img ng-src="https://storage.googleapis.com/cafeindica/thisisnotarandomstringinfactnoneis/small/@{{package.images[0].file_name}}" />
+            </div>
+          </div>
+          <div flex="60" ng-click="showPackage(package)">
+            <h5>{{package.name | lowercase}}</h5>
+            <span>{{package.description}}</span>
+          </div>
+          <div class="cart-quantity" flex="20" layout = "row" layout-align="center center"></div>
+          <div class="amount" flex="20" layout-align = "center center" layout = "row">{{package.price | currency:"₹ ":0}}</div>
+        </div>
+
+        <div layout="row" layout-align="center center" ng-repeat="item in cart.items">
+          <div class="image-wrapper" ng-click="showItem(item)">
+            <div>
+              <img ng-src="https://storage.googleapis.com/cafeindica/thisisnotarandomstringinfactnoneis/small/@{{item.images[0].file_name}}" />
+            </div>
+          </div>
+          <div flex="60" ng-click="showPackage(item)">
+            <h5>{{item.name | lowercase}}</h5>
+          </div>
+          <div class="cart-quantity" flex="20">
+            <div ng-click="descCount(item)">&#x2012;</div>
+            <div>{{item.count}}</div>
+            <div ng-click="increCount(item)" >+</div>
+          </div>
+          <div class="amount" flex="20" layout-align = "center center" layout = "row">{{item.sp * item.count  | currency:"₹ ":0}}</div>
+        </div>
+      </div>
+      <div class ="cart-summary" layout="row">
+        <div class="cart-coupon" flex="40" layout="column" layout-align="center center">
+          <h2>Have a discount Coupon?</h2>
+          <div class="input-group">
+            <input type="text" name="coupon"  ng-model="couponcode" placeholder="Coupon" >
+            <button class="primary" ng-click = "Applycoupon(couponcode)" >Apply Code!</button>
+          </div>
+        </div>
+        <div class="cart-noitem" flex = "25" layout= "column " layout-align = "center center">
+          <strong>{{cart.total_itemo}}</strong>
+          <span>Items</span>
+        </div>
+        <div class="cart-billing" flex = "35" layout= "column " layout-align = "center center">
+          <div class="total">
+            <span class="label">Total</span>
+            <span class="amount">{{cart.total_price |currency:'₹ ':0}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cart" show-xs hide-gt-xs >
+      <div layout="row" flex="100" class="header">
+        <div class="image-wrapper"></div>
+        <div class="cart-item " >Items</div>
+      </div>
+      <div class="cart-content">
+        <div layout-align="center center" ng-repeat="package in cart.packages">
+          <div layout="row" >
+          <div class="image-wrapper" ng-click="showPackage(package)">
+            <div>
+              <img ng-src="https://storage.googleapis.com/cafeindica/thisisnotarandomstringinfactnoneis/small/@{{package.images[0].file_name}}" />
+            </div>
+          </div>
+          <div  ng-click="showPackage(package)">
+            <h5>{{package.name | lowercase}}</h5>
+            <span>{{package.description}}</span>
+          </div>
+        </div>
+        <div layout="row">
+          <div class="cart-quantity" layout = "row" layout-align="center center"></div>
+          <div class="amount"  layout-align = "center center" layout = "row">{{package.price | currency:"₹ ":0}}</div>
+        </div>
+        </div>
+
+        <div layout="column" layout-align="center" ng-repeat="item in cart.items">
+          <div layout="row"  layout-align="center center">
+          <div  class="image-wrapper col-50"  ng-click="showItem(item)">
+            <div>
+              <img ng-src="https://storage.googleapis.com/cafeindica/thisisnotarandomstringinfactnoneis/small/@{{item.images[0].file_name}}" />
+            </div>
+          </div>
+          <div class="col-50"  ng-click="showPackage(item)" style="text-align:center">
+            <h5>{{item.name | lowercase}}</h5>
+          </div>
+        </div>
+        <div layout="row"  style="height:60px;width:100%">
+          <div class="cart-quantity col-50"  layout = "row" layout-align = "center center">
+            <div ng-click="descCount(item)">&#x2012;</div>
+            <div>{{item.count}}</div>
+            <div ng-click="increCount(item)" >+</div>
+          </div>
+          <div class="amount col-50"  layout-align = "center center" layout = "row">{{item.sp * item.count  | currency:"₹ ":0}}</div>
+        </div>
+      </div>
+      </div>
+      <div class ="cart-summary"  >
+      <div class="cart-coupon"  layout="column" layout-align="center center">
+        <h2>Have a discount Coupon?</h2>
+        <div class="input-group">
+          <input type="text" name="coupon"  ng-model="couponcode" placeholder="Coupon" >
+          <button class="primary" ng-click = "Applycoupon(couponcode)" >Apply Code!</button>
+        </div>
+      </div>
+    </div>
+      <div class ="cart-summary" layout="row">
+        <div class="cart-noitem col-50"  layout= "column " layout-align = "center center">
+          <strong>{{cart.total_itemo}}</strong>
+          <span>Items</span>
+        </div>
+        <div class="cart-billing"  layout= "column " layout-align = "center center">
+          <div class="total">
+            <span class="label">Total</span>
+            <span class="amountxs">{{cart.total_price |currency:'₹ ':0}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-actions" layout="row">
+      <button class="primary" ng-click="goToshopping()">Continue Shopping</button>
+      <button class="secondary" ng-click="mydetail()">Checkout</button>
+    </div>
+  </div>
+
+</div>

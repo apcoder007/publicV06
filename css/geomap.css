@@ -1,0 +1,248 @@
+#btnSection{
+  padding: 10px 0;
+  width: 80%;
+}
+#btndpdown{
+  width: 20%;
+}
+#btnSection .md-accent{
+  background-color: #515970;
+  text-decoration: none;
+  border-radius: 4px;
+  line-height: 32px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  text-transform: none;
+}
+#btnSection .md-accent:hover{
+  background-color: #404860;
+}
+#mapContain{
+  margin-top: 0px;
+  width: 1280px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+#map{
+  height: 90vh;
+  border: 1px solid rgba(0,0,0, 0.2);
+  width: 72%;
+}
+
+.text-padd{
+      padding: 12px 16px 12px;
+}
+.img-margin{
+  margin-top: 0px;
+}
+#mapDetail{
+  background-color: #d6d9e2;
+  width: 26%;
+  overflow-y: scroll;
+  height: 90vh;
+  border: 1px solid rgba(0,0,0, 0.2);
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+.coverimg{
+
+}
+.infocover{
+  width: 210px;
+      padding-bottom: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+}
+.coverimg img{
+  width: 200px;
+  height: 146px;
+  object-fit:cover;
+}
+.cover-society{
+  color: rgba(0,0,0,0.54);
+  font-size: 14px;
+  margin: 2px 4px;
+}
+.cover-text{
+  width: 200px;
+      padding: 8px 4px;
+}
+.cover-font{
+  font-size: 20px;
+  margin: 2px 4px;
+  line-height: 24px;
+}
+
+.gm-style-iw{
+  top: 20px!important;
+  position: absolute;
+  left: 28px!important;
+  width: 233px;
+}
+
+      #iw-container {
+        margin-bottom: 0px;
+        margin-left: 25px;
+        width: 200px;
+      }
+
+      #iw-container .iw-content {
+        font-size: 13px;
+        line-height: 10px;
+        font-weight: 350;
+        margin-right: 1px;
+        padding: 5px 5px 5px 5px;
+      }
+      .iw-subTitle {
+        font-size: 20px;
+        padding: 5px 0;
+        margin-top: 5px;
+      }
+
+#dpDown{
+  padding: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  width: 140px;
+  color: white;
+  background-color: #515970;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align-last: center;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#dpDown option{
+  background-color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  color: black;
+}
+
+#map-detail{
+  height: 146px;
+  width: 99%;
+  margin: 1px 0px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+}
+#detail{
+  width: 65%;
+  float: left;
+  height: 115px;
+}
+@media screen and (max-width: 1280px) and (min-width: 480px){
+  #kimg img{
+    float: right;
+  }
+  #mapContain{
+    width: 95%;
+  }
+}
+@media screen and (max-width: 320px) and (min-width: 0px){
+  #mapContain{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 480px) and (min-width: 320px){
+  #btnSection .md-accent{
+    font-size: 12px;
+    line-height: 14px;
+  }
+  #dpDown{
+    font-size: 12px;
+    line-height: 14px;
+  }
+  #dpDown option{
+    font-size: 12px;
+    line-height: 14px;
+  }
+  #detail{
+    font-size: 12px;
+    width: 60%;
+  }
+  #kimg{
+    width: 40%;
+    float: right;
+  }
+  #kimg img{
+    width: 100%;
+    float: right;
+  }
+  #mapContain{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 720px) and (min-width: 480px){
+  #btnSection .md-accent{
+    font-size: 14px;
+    line-height: 24px;
+  }
+  #dpDown{
+    font-size: 14px;
+    line-height: 24px;
+  }
+  #dpDown option{
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+@media screen and (max-width: 960px) and (min-width: 720px){
+  #btnSection .md-accent{
+    font-size: 16px;
+    line-height: 22px;
+  }
+  #dpDown{
+    font-size: 16px;
+    line-height: 22px;
+  }
+  #dpDown option{
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+@media screen and (max-width: 1280px) and (min-width: 960px){
+  #btnSection{
+    display: list-item;
+    margin-left: 30%;
+    list-style: none;
+  }
+  #btnSection .md-accent{
+    font-size: 16px;
+    line-height: 22px;
+  }
+  #dpDown{
+    font-size: 16px;
+    line-height: 22px
+  }
+  #dpDown option{
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+@media screen and (max-width: 1920px) and (min-width: 1280px){
+  #kimg img{
+    float: right;
+    margin-right: 1px;
+  }
+}
+.detHead{
+  padding-left: 10px;
+}
+#kimg{
+  width: 30%;
+  margin-right: 5px;
+  float: right;
+}
+#kimg img{
+  width: 115px;
+  height: 110px;
+  margin-right: 1px;
+  padding: 1px;
+}

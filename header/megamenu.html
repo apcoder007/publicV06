@@ -1,0 +1,280 @@
+<style media="screen">
+  #megamenu{
+    background: #f1f1f2;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 0;
+    overflow: hidden;
+  }
+  /*li.topnav-item:hover #megamenu{
+    z-index: 12;
+  }*/
+  .supersection_product > div{
+    padding: 0 20px;
+  }
+</style>
+<div id="megamenu" ng-controller="productCtrl">
+<ul class="top-subnav container" id="top-subnav-furniture">
+  <li class="supersection"  ng-class="{'active' : !decor && !furnishings}">
+    <a href='/#!/products?supersection={{supersections[0].name}}' ng-mouseenter="decor=false;furnishings=false;">{{supersections[0].name}}</a>
+    <div class="supersection-links"  ng-show="!decor && !furnishings" >
+      <div class = "supersection_product container" layout="row" >
+        <div class="section-product" flex="40">
+          <div class = "section-name">
+            <a href="/#!/products?section=={{supersections[0].sections[0].name}}">{{supersections[0].sections[0].name}}</a>
+          </div>
+          <div layout="row">
+            <div layout = "column" flex="50">
+
+              <div class="subsection-product" >
+                <div class="subsection-name">
+                  <a href="/#!/products?section=={{supersections[0].sections[0].subsections[0].name}}">{{supersections[0].sections[0].subsections[0].name}}</a>
+                </div>
+
+                <ul class="categories"> 
+                  <li ng-repeat="category in supersections[0].sections[0].subsections[0].categories">
+                  <a href="/#!/products?category={{category['name']}}">{{category['name'].toLowerCase()}}</a>
+                  </li>  
+                </ul>
+
+              </div>
+
+              <div class="subsection-product" >
+                <div class="subsection-name">
+                  <a href="/#!/products?section=={{supersections[0].sections[0].subsections[2].name}}">{{supersections[0].sections[0].subsections[2].name}}</a>
+                </div>
+
+                <ul class="categories">
+                  <li ng-repeat="category in supersections[0].sections[0].subsections[2].categories">
+                  <a href="/#!/products?category={{category['name']}}">{{category['name'].toLowerCase()}}</a>
+                  </li>  
+                </ul>
+
+              </div>
+
+            </div>
+
+            <div class="subsection-product" flex="50">
+              <div class="subsection-name">
+                <a href="/#!/products?section=={{supersections[0].sections[0].subsections[1].name}}">{{supersections[0].sections[0].subsections[1].name}}</a>
+              </div>
+
+                <ul class="categories">
+                  <li ng-repeat="category in supersections[0].sections[0].subsections[1].categories">
+                  <a href="/#!/products?category={{category['name']}}">{{category['name'].toLowerCase()}}</a>
+                  </li> 
+                </ul>
+
+            </div>
+            
+          </div>
+        </div>
+        <div flex="20" layout="column">
+          <div>
+            <div class = "section-name">
+              
+              <a href="/#!/products?section=={{supersections[0].sections[1].name}}">{{supersections[0].sections[1].name}}</a>
+            </div>
+            <div class="subsection-product">
+
+                <ul class="categories">
+                  <li ng-repeat="category in supersections[0].sections[1].subsections[0].categories">
+                  <a href="/#!/products?category={{category['name']}}">{{category['name'].toLowerCase()}}</a>
+                  </li> 
+                </ul>
+
+            </div>
+
+          </div>
+          <div >
+
+            <div class = "section-name">
+              
+              <a href="/#!/products?section=={{upersections[0].sections[5].name}}">{{supersections[0].sections[5].name}}</a>
+            </div>
+
+            <div class="subsection-product">
+
+                <ul class="categories">
+                  <li ng-repeat="category in supersections[0].sections[5].subsections[0].categories">
+                  <a href="/#!/products?category={{category['name']}}">{{category['name'].toLowerCase()}}</a>
+                  </li> 
+                </ul>
+
+            </div>
+          </div>
+        </div>
+        <div layout="column" flex= "20">
+          <div>
+            <div class = "section-name">
+              
+              <a href="/#!/products?section=={{supersections[0].sections[2].name}}">{{supersections[0].sections[2].name}}</a>
+            </div>
+            <div class="subsection-product">
+
+                <ul class="categories">
+                  <li ng-repeat="category in supersections[0].sections[2].subsections[0].categories">
+                  <a href="/#!/products?category={{category['name']}}">{{category['name'].toLowerCase()}}</a>
+                  </li> 
+                </ul>
+
+            </div>
+          </div>
+        </div>
+        <div layout="column" flex="20">
+          <div>
+            <div class = "section-name">
+              
+              <a href="/#!/products?section=={{supersections[0].sections[3].name}}">{{supersections[0].sections[3].name}}</a>
+            </div>
+            <div class="subsection-product">
+
+                <ul class="categories">
+                  <li ng-repeat="category in supersections[0].sections[3].subsections[0].categories">
+                  <a href="/#!/products?category={{category['name']}}">{{category['name'].toLowerCase()}}</a>
+                  </li> 
+                </ul>
+
+            </div>
+          </div>
+          <div>
+            
+            <div class = "section-name">
+              
+              <a href="/#!/products?section=={{supersections[0].sections[4].name}}">{{supersections[0].sections[4].name}}</a>
+            </div>
+            <div class="subsection-product">
+
+                <ul class="categories">
+                  <li ng-repeat="category in supersections[0].sections[4].subsections[0].categories">
+                  <a href="/#!/products?category={{category['name']}}">{{category['name'].toLowerCase()}}</a>
+                  </li> 
+                </ul>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <li class="supersection" ng-class="{'active' : decor}">
+    <a href='/#!/products?supersection={{supersections[1].name}}' ng-mouseenter="decor=true;furnishings=false;">{{supersections[1].name}}</a>
+    <div class="supersection-links"  ng-show="decor" >
+      <div class="supersection_product container" layout="row">
+        <div flex></div>
+        
+        <div class="section-product" flex="25">
+          <div class = "section-name">
+            
+            <a href="/#!/products?section=={{supersections[1].sections[0].name}}">{{supersections[1].sections[0].name}}</a>
+          </div>
+          <div class="subsection-product" >
+
+              <ul class="categories">
+                <li ng-repeat="category in supersections[1].sections[0].subsections[0].categories">
+                <a href="/#!/products?category={{category['name']}}">{{category['name'].toLowerCase()}}</a>
+                </li> 
+              </ul>
+
+          </div>
+        </div>
+
+        <div class="section-product" flex="25">
+          <div class = "section-name">
+            
+            <a href="/#!/products?section=={{supersections[1].sections[1].name}}">{{supersections[1].sections[1].name}}</a>
+          </div>
+          <div class="subsection-product" >
+            
+              <ul class="categories">
+                <li ng-repeat="category in supersections[1].sections[1].subsections[0].categories">
+                <a href="/#!/products?category={{category['name']}}">{{category['name'].toLowerCase()}}</a>
+                </li> 
+              </ul>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </li>
+
+  <li class="supersection" ng-class="{active:furnishings}">
+    <a href='/#!/products?supersection={{supersections[2].name}}' ng-mouseenter="decor=false;furnishings=true;">{{supersections[2].name}}</a>
+    <div class="supersection-links"  ng-show="furnishings" >
+      <div class = "supersection_product container" layout="row"  >
+
+        <div class="section-product" flex="25">
+          <div class = "section-name">
+            
+            <a href="/#!/products?section=={{supersections[2].sections[0].name}}">{{supersections[2].sections[0].name}}</a>
+          </div>
+          <div class="subsection-product" >
+
+              <ul class="categories">
+                <li ng-repeat="category in supersections[2].sections[0].subsections[0].categories">
+                <a href="/#!/products?category={{category['name']}}">{{category['name'].toLowerCase()}}</a>
+                </li> 
+              </ul>
+
+          </div>
+        </div>
+
+        <div class="section-product" flex="25">
+          <div class = "section-name">
+            
+            <a href="/#!/products?section=={{supersections[2].sections[1].name}}">{{supersections[2].sections[1].name}}</a>
+          </div>
+          <div class="subsection-product" >
+
+              <ul class="categories">
+                <li ng-repeat="category in supersections[2].sections[1].subsections[0].categories">
+                <a href="/#!/products?category={{category['name']}}">{{category['name'].toLowerCase()}}</a>
+                </li> 
+              </ul>
+
+          </div>
+        </div>
+
+        <div class="section-product" flex="25">
+          <div class = "section-name">
+            
+            <a href="/#!/products?section=={{supersections[2].sections[2].name}}">{{supersections[2].sections[2].name}}</a>
+          </div>
+          <div class="subsection-product" >
+            
+              <ul class="categories">
+                <li ng-repeat="category in supersections[2].sections[2].subsections[0].categories">
+                <a href="/#!/products?category={{category['name']}}">{{category['name'].toLowerCase()}}</a>
+                </li> 
+              </ul>
+
+          </div>
+        </div>
+
+        <div class="section-product" flex="25">
+          <div class = "section-name">
+            
+            <a href="/#!/products?section=={{supersections[2].sections[3].name}}">{{supersections[2].sections[3].name}}</a>
+          </div>
+          <div class="subsection-product" >
+
+              <ul class="categories">
+                <li ng-repeat="category in supersections[2].sections[3].subsections[0].categories">
+                <a href="/#!/products?category={{category['name']}}">{{category['name'].toLowerCase()}}</a>
+                </li> 
+              </ul>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </li>
+</ul>
+</div>
+

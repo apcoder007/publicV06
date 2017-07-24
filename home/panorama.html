@@ -1,0 +1,357 @@
+<style type="text/css">
+#canvas{
+	margin-left: auto;
+	margin-right: auto;
+  background: white;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  transition: all 0.5s;
+  z-index: -1;
+}
+
+@media screen and (max-height: 1300px) and (min-width: 960px){
+	#canvas{
+		
+	}
+}
+
+@media screen and (max-height: 1600px) and (min-width: 1301px){
+	#canvas{
+		
+	}
+}
+
+
+#canvas.active{
+  z-index: 12;
+  opacity: 1;
+}
+
+#canvas > canvas{
+  width: inherit;
+  height: inherit;
+}
+
+
+div#carousel1 {
+perspective: 1200px;
+font-size:0;
+margin-bottom: 3rem;
+overflow: hidden;
+}
+figure#spinner {
+transform-style: preserve-3d;
+height: 300px;
+transform-origin: 50% 50% -500px;
+transition: 1s;
+}
+figure#spinner img {
+width: 40%; max-width: 425px;
+position: absolute; left: 30%;
+transform-origin: 50% 50% -500px;
+outline:1px solid transparent;
+}
+figure#spinner img:nth-child(1) { transform:rotateY(0deg);
+}
+figure#spinner img:nth-child(2) { transform: rotateY(-45deg); }
+figure#spinner img:nth-child(3) { transform: rotateY(-90deg); }
+figure#spinner img:nth-child(4) { transform: rotateY(-135deg); }
+figure#spinner img:nth-child(5){ transform: rotateY(-180deg); }
+figure#spinner img:nth-child(6){ transform: rotateY(-225deg); }
+figure#spinner img:nth-child(7){ transform: rotateY(-270deg); }
+figure#spinner img:nth-child(8){ transform: rotateY(-315deg); }
+div#carousel1 ~ span {
+color: #fff;
+margin: -13%;
+display: inline-block;
+text-decoration: none;
+font-size: 5rem;
+transition: 0.6s color;
+position: relative;
+margin-top: -15rem;
+border-bottom: none;
+line-height: 0; }
+div#carousel1 ~ span:hover { color: #888; cursor: pointer; }
+
+#parahead h2{
+  color: white;
+  font-size: 48px;
+  padding: 20px;
+  position: relative;
+  font-size: 32px;
+  margin-top: 0;
+  font-family: 'Lobster', helvetica, arial;
+  text-decoration: none;
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(50%, rgba(0,0,0,.5)), to(rgba(0,0,0,1)));
+}
+#parahead h2:after {
+        content : 'panorama.........';
+        color: #d6d6d6;
+        text-shadow: 0 1px 0 white;
+    }
+ #paraView{
+ 	margin-left: auto;
+ 	margin-right: auto;
+ }
+ .jit{
+ 	height: 200px;
+ }
+
+</style>
+
+<div class="paraView" style="background-color:#515970" style="height:500px">
+  <div class="container">
+    <div class="" id="parahead">
+      <h2></h2>
+    </div>
+
+    <div class="" id="carousel1">
+      <figure id="spinner">
+      <img class="jit" src="images/new/Panorama 1.jpg" par="images/new/Panorama 1.jpg" alt=""/>
+      <img class="jit" src="images/new/Panorama 2.jpg" par="images/new/Panorama 2.jpg" alt=""/>
+      <img class="jit" src="images/new/3.jpg" par="images/new/3-3.jpg" alt=""/>
+      <img class="jit" src="images/new/4.jpg" par="images/new/4-4.jpg" alt=""/>
+      <img class="jit" src="images/new/5.jpg" par="images/new/5-5.jpg" alt=""/>
+      <img class="jit" src="images/new/6.jpg" par="images/new/6-6.jpg" alt=""/>
+      <img class="jit" src="images/new/7.jpg" par="images/new/7-7.jpg" alt=""/>
+      <img class="jit" src="images/new/8.jpg" par="images/new/8.jpg" alt=""/>
+      </figure>
+    </div>
+
+    <span style="float:left" class="ss-icon" onclick="galleryspin('-')">&laquo;</span>
+    <span style="float:right" class="ss-icon" onclick="galleryspin('')">&raquo;</span>
+
+    
+  </div>
+  </div>
+
+  <div id="canvas">
+      <img src="images/icons/unmax.png" class= "backto" style="cursor: pointer;position:fixed;top: 80px;right: 5px;width: 55px;background: rgba(255, 255, 255, 0.5);padding: 5px;border-radius: 20px;" />
+      <!--<img src="images/general/Minimap_Loading.gif" class="loading"/>-->
+    </div>
+
+<script src="js/three.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+var camera, scene, renderer;
+var isUserInteracting;
+var onMouseDownMouseX, onMouseDownMouseY, onMouseDownLon, onMouseDownLat;
+var lat, lon, phi, theta;
+
+var panorama_image;
+var container, mesh;
+var firstTime = false;
+function showPanorama(jit){
+  if(!firstTime){
+    isUserInteracting = false;
+    onMouseDownMouseX = 0;
+    onMouseDownMouseY = 0;
+  	lon = 0;
+    onMouseDownLon = 0;
+  	lat = 0;
+    onMouseDownLat = 0;
+  	phi = 0;
+    theta = 0;
+  	init(jit);
+  	animate();
+    firstTime = true;
+  }
+
+  $('#canvas').addClass('active');
+  $('#package').removeClass('container full-width');
+}
+
+function init(jit) {
+  $('#canvas > img').click(function(){
+    $('#canvas').removeClass('active');
+    $('#package').addClass('container full-width');
+     //window.location.hash = '';
+     window.location.reload(true);
+  });
+	container = document.getElementById( 'canvas' );
+  console.log(container.offsetWidth);
+
+	camera = new THREE.PerspectiveCamera( 75, container.offsetWidth / container.offsetHeight, 1, 1100 );
+	camera.target = new THREE.Vector3( 0, 0, 0 );
+
+	scene = new THREE.Scene();
+
+	var geometry = new THREE.SphereGeometry( 500, 60, 40 );
+	geometry.scale( - 1, 1, 1 );
+console.log(jit);
+  THREE.ImageUtils.crossOrigin = '';
+	var material = new THREE.MeshBasicMaterial( {
+		map: THREE.ImageUtils.loadTexture(jit)//.load('panorama/panoramic_1.jpg')
+	} );
+
+	mesh = new THREE.Mesh( geometry, material );
+
+	scene.add( mesh );
+
+	renderer = new THREE.WebGLRenderer();
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( container.offsetWidth, container.offsetHeight );
+	container.appendChild( renderer.domElement );
+
+	container.addEventListener( 'mousedown', onDocumentMouseDown, false );
+	container.addEventListener( 'mousemove', onDocumentMouseMove, false );
+	container.addEventListener( 'mouseup', onDocumentMouseUp, false );
+	container.addEventListener( 'mousewheel', onDocumentMouseWheel, false );
+	container.addEventListener( 'MozMousePixelScroll', onDocumentMouseWheel, false);
+
+	//
+
+	container.addEventListener( 'dragover', function ( event ) {
+		event.preventDefault();
+		event.dataTransfer.dropEffect = 'copy';
+	}, false );
+
+	container.addEventListener( 'dragenter', function ( event ) {
+		container.body.style.opacity = 0.5;
+	}, false );
+
+	container.addEventListener( 'dragleave', function ( event ) {
+		container.body.style.opacity = 1;
+	}, false );
+
+	container.addEventListener( 'drop', function ( event ) {
+		event.preventDefault();
+		var reader = new FileReader();
+		reader.addEventListener( 'load', function ( event ) {
+			material.map.image.src = event.target.result;
+			material.map.needsUpdate = true;
+		}, false );
+		reader.readAsDataURL( event.dataTransfer.files[ 0 ] );
+		container.body.style.opacity = 1;
+	}, false );
+
+	//
+
+	container.addEventListener( 'resize', onWindowResize, false );
+
+}
+
+function onWindowResize() {
+
+  console.log(container.offsetWidth);
+
+	camera.aspect = container.offsetWidth / container.offsetHeight;
+	camera.updateProjectionMatrix();
+
+	renderer.setSize( container.offsetWidth, container.offsetHeight );
+
+}
+
+function onDocumentMouseDown( event ) {
+
+	event.preventDefault();
+
+	isUserInteracting = true;
+
+	onPointerDownPointerX = event.clientX;
+	onPointerDownPointerY = event.clientY;
+
+	onPointerDownLon = lon;
+	onPointerDownLat = lat;
+
+}
+
+function onDocumentMouseMove( event ) {
+
+	if ( isUserInteracting === true ) {
+
+		lon = ( onPointerDownPointerX - event.clientX ) * 0.1 + onPointerDownLon;
+		lat = ( event.clientY - onPointerDownPointerY ) * 0.1 + onPointerDownLat;
+
+	}
+
+}
+
+function onDocumentMouseUp( event ) {
+	isUserInteracting = false;
+}
+
+function onDocumentMouseWheel( event ) {
+  event.preventDefault();
+
+	// WebKit
+
+	if ( event.wheelDeltaY ) {
+
+		camera.fov -= event.wheelDeltaY * 0.05;
+
+	// Opera / Explorer 9
+
+	} else if ( event.wheelDelta ) {
+
+		camera.fov -= event.wheelDelta * 0.05;
+
+	// Firefox
+
+	} else if ( event.detail ) {
+
+		camera.fov += event.detail * 1.0;
+
+	}
+
+	camera.updateProjectionMatrix();
+
+}
+
+function animate() {
+	requestAnimationFrame( animate );
+	update();
+}
+
+function update() {
+
+	if ( isUserInteracting === false ) {
+
+		lon += 0.1;
+
+	}
+
+	lat = Math.max( - 85, Math.min( 85, lat ) );
+	phi = THREE.Math.degToRad( 90 - lat );
+	theta = THREE.Math.degToRad( lon );
+
+	camera.target.x = 500 * Math.sin( phi ) * Math.cos( theta );
+	camera.target.y = 500 * Math.cos( phi );
+	camera.target.z = 500 * Math.sin( phi ) * Math.sin( theta );
+
+	camera.lookAt( camera.target );
+
+	/*
+	// distortion
+	camera.position.copy( camera.target ).negate();
+	*/
+
+	renderer.render( scene, camera );
+
+}
+
+
+var angle = 0;
+function galleryspin(sign) {
+spinner = document.querySelector("#spinner");
+if (!sign) { angle = angle + 45; } else { angle = angle - 45; }
+spinner.setAttribute("style","-webkit-transform: rotateY("+ angle +"deg); -moz-transform: rotateY("+ angle +"deg); transform: rotateY("+ angle +"deg);");
+}
+
+
+
+$(document).ready(function(){
+  $('.jit').click(function(){
+    var jit = $(this).attr("par");
+    //alert(jit);
+    showPanorama(jit);
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+
+</script>

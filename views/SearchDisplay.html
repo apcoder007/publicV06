@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>welcome</h1>
+    <ul>
+    @foreach($items1 as $item)
+      <li>{{ $item->id }}, {{ $item->name }}, {{$item->code}}</li>
+    @endforeach
+    </ul>
+  </body>
+</html>
+return $items;

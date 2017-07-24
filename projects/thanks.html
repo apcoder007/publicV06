@@ -1,0 +1,28 @@
+<div layout="row" layout-align="center">
+  <div class="container">
+
+
+    <div layout="row" layout-align="center" style="padding-bottom:187px;" >
+
+
+      <div class="order-result" flex="100" layout="column" layout-align="center">
+
+        <div class = "message" ng-if = " order.transaction_status != 'Success' " >
+          <div>Transaction @{{order.transaction_status}}</div>
+          <div>We are sorry. Please try once again</div>
+        </div>
+
+        <div class="success-icon" ng-if="order.transaction_status == 'Success'" ></div>
+        <div class="message" ng-if="order.transaction_status == 'Success'" >
+
+          <h4 class="greeting">Congratulations</h4>
+          <div>Transaction @{{order.transaction_status}}</div>
+          <h5 class="subhead">Order Id: @{{order.reference_id}}</h5>
+          <p>We have received your payment .Our customer executive will contact you soon for further information</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

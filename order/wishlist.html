@@ -1,0 +1,84 @@
+<style media="screen">
+.wishlist-content{
+  margin-bottom: 150px;
+}
+.wishlist-content > div{
+  height: 112px;
+  padding: 24px;
+  border: solid 2px #f1f1f2;
+}
+
+.wishlist-content .image-wrapper{
+  width: 118px;
+}
+.wishlist-content .image-wrapper > a{
+  width: 63px;
+  display: block;
+}
+.wishlist-content .image-wrapper > a > img{
+  width: 100%;
+  cursor: pointer;
+}
+
+.wishlist-content > div > div:nth-child(2) > a{
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.21;
+  color: #282b2d;
+  cursor: pointer;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.wishlist-content button{
+  width: 150px;
+  height: 40px;
+  margin-left: 18px;
+}
+
+.wishlist-content .price{
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+  color: #a70429;
+  width: 141px;
+  padding-right: 33px;
+}
+
+</style>
+
+
+<div layout="row" layout-align="center">
+  <div class="container">
+    <div  layout="row" class="page-heading">
+      <div class="title">My Wishlist</div>
+      <div class="subtitle">For any queries call us at 011 - 490 60 935</div>
+    </div>
+
+    <div class="wishlist-content">
+      <div layout ="row" ng-repeat="package in bookmark.packages" layout-align="center center">
+        <div class="image-wrapper">
+          <a href="#/package/@{{package.id}}"><img ng-src="//s3-us-west-2.amazonaws.com/thisisnotarandomstringinfactnoneis/small/@{{package.images[0].file_name}}" /></a>
+        </div>
+        <div flex><a href="#/package/@{{package.id}}">@{{package.name}}</a></div>
+        <div class="price">@{{package.price | currency:"₹ ":0}}</div>
+        <div layout="row">
+          <button class="secondary" ng-click="cart.togglePackage(pack)">Add to Cart</button>
+          <button class="primary" ng-click="bookmark.package(package)">Remove</button>
+        </div>
+      </div>
+      <div layout ="row" ng-repeat="item in bookmark.items" layout-align="center center">
+        <div class="image-wrapper">
+          <a href="#/item/@{{item.id}}"><img ng-src="//s3-us-west-2.amazonaws.com/thisisnotarandomstringinfactnoneis/small/@{{item.images[0].file_name}}" /></a>
+        </div>
+        <div flex><a href="#/item/@{{item.id}}">@{{item.name}}</a></div>
+        <div class="price">@{{item.sp | currency:"₹ ":0}}</div>
+        <div layout="row">
+          <button class="secondary" ng-click="cart.toggleItem(item)">Add to Cart</button>
+          <button class="primary" ng-click="bookmark.item(item)">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+
+├── aboutus.blade.php // About Us page
+├── callback.blade.php   // Callback Request
+├── card.blade.php	//
+├── contact
+│   └── contacts.blade.php // contacts page
+├── dialog
+│   ├── bookmarks.blade.php
+│   ├── bulk.blade.php
+│   ├── designer.blade.php
+│   ├── item.blade.php
+│   ├── login2.blade.php
+│   ├── login.blade.php
+│   └── package.blade.php
+├── email
+│   ├── callbacknotification.blade.php   // Email template, when call-back request call
+│   ├── itemnotification.blade.php	//
+│   ├── packagenotification.blade.php
+│   ├── recovery.blade.php		//Email template, when password recovery
+│   └── verify.blade.php		// Email template, when verification code is send to user
+├── endorsement.blade.php		// Company's endorsement
+├── errors
+│   └── 503.blade.php
+├── footer.blade.php
+├── header
+│   ├── login.blade.php			// login page
+│   ├── megamenu.blade.php		// mega menu section, sub section, supersection
+│   └── recovery.blade.php		// Account recovery
+├── header.blade.php			// Header which includes header.login, header.megamenu, header.recovery
+├── help.blade.php
+├── home
+│   ├── browsbystyle.blade.php		// Show products by style
+│   ├── bulk.blade.php			// Bulk items
+│   ├── carousel.blade.php		// Carousel in index section
+│   ├── homescreen.blade.php
+│   ├── howitworks.blade.php  // How it work section index page
+│   ├── howitworksnew.blade.php  // How it work section
+│   ├── interactivequiz.blade.php // interactive quiz section
+│   ├── itemsubhead.blade.php
+│   ├── navbuttons.blade.php
+│   ├── needhelp.blade.php    // Need help section
+│   ├── news.blade.php        // News section
+│   ├── services.blade.php
+│   ├── successtory.blade.php   // Successs story
+│   └── userflow.blade.php      // this section was at older version
+├── home1.blade.php
+├── home.blade.php
+├── itemlist.blade.php        // All item of a particular section or category
+├── items
+│   └── item.blade.php        // individual item page
+├── locations
+│   └── geomap.blade.php      // Projects page , it has map view all, running and completed projects
+├── needhelp.blade.php
+├── order
+│   ├── cart.blade.php      // Show items in carts
+│   ├── checkout.blade.php    // Checkout page with payment gateway
+│   ├── codcheckout.blade.php  // Checkout page for cod
+│   ├── mydetails.blade.php     // Address
+│   ├── progressivebar.blade.php   // Progressive bar, flow stages of order
+│   ├── thanks.blade.php        // Thank you page after successful redirect from bank page
+│   └── wishlist.blade.php      // Wishlist page
+├── overlay.blade.php
+├── packages
+│   ├── package.blade.php         // single package view
+│   ├── packagebystyle.blade.php    // All packages search by style
+│   └── pakagesbycategory.blade.php // All packages search by category
+├── packages.blade.php
+├── panorama
+│   └── view.blade.php     // It shows Panorama view
+├── popup.blade.php
+├── projects
+│   ├── accounts.blade.php        // Page
+│   ├── address.blade.php         // address page
+│   ├── checkout.blade.php        // payments checkout
+│   ├── home.blade.php
+│   ├── homecalendar.blade.php    // calendar
+│   ├── projectprogress.blade.php
+│   └── thanks.blade.php          // thanks page after successful re-direct
+├── SearchDisplay.blade.php
+├── skeleton.blade.php        // Base App page, Which contain head section  and body
+├── upload.blade.php
+├── user
+│   ├── cngpassword.blade.php   // change password
+│   ├── orders.blade.php
+│   └── setpassword.blade.php   // Set password when there is no password assigned, when user login after  social login
+├── vendor
+└── views.txt

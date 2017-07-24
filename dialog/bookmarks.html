@@ -1,0 +1,32 @@
+<md-dialog aria-label="Bookmarks"  ng-cloak>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Bookmarks</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon class="material-icons" aria-label="Close dialog">clear</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-content>
+      <section>
+        <md-subheader>Packages</md-subheader>
+        <md-list layout="column" layout-padding>
+           <md-list-item ng-repeat="package in bookmarks">
+             <div flex="30">
+               <img ng-src="image/@{{package.images[0].id}}" style="max-width:100%;max-height:100%" />
+             </div>
+
+             <div class="md-item-list-text">
+               <h3>@{{package.name}}</h3>
+               <h4>@{{package.style}}</h4>
+               <p>@{{package.price}}</p>
+             </div>
+           </md-list-item>
+        </md-list>
+      </section>
+      <section>
+        <md-subheader>Packages</md-subheader>
+      </section>
+  </md-content>
+</md-dialog>

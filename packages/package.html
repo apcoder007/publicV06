@@ -1,0 +1,764 @@
+<style media="screen">
+img#panorama-button{
+  position:absolute;
+  bottom: 10px;
+  right: 7px;
+  width: 70px;
+  cursor: pointer;
+  z-index: 11;
+  height: 70px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  opacity: 0;
+}
+.image-wrapper:hover > img#panorama-button{
+  opacity: 1;
+}
+#canvas{
+  background: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  transition: all 0.5s;
+  z-index: -1;
+}
+
+#canvas.active{
+  z-index: 12;
+  opacity: 1;
+}
+
+#canvas > canvas{
+  width: inherit;
+  height: inherit;
+}
+
+.mask{
+  width: 21px;
+  height: 21px;
+  background-color: #a70429;
+  border: solid 1px #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+}
+.item-info{
+  width: 203.7px;
+  height: 86px;
+  border-radius: 7px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.5);
+  border: solid 1px #e6e6e6;;
+}
+.info{
+  overflow-y:auto;
+      width: inherit;
+
+}
+.item-descript{
+  margin-left: 30px;
+  margin-top: -24px;
+  width: 203.7px;
+  height: 86px;
+  border-radius: 7px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.5);
+  border: solid 1px #e6e6e6;
+
+}
+
+
+
+  .item-descript::after{
+    content: '';
+        height: 0px;
+        width: 0px;
+        border-top: 10px solid transparent;
+        border-left: 12px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #ffffff;
+        position: absolute;
+        margin-top: -24px;
+        margin-left: -123px;
+  }
+
+.item-descript-inner{
+  text-align: center;
+}
+
+.item-descript-inner > h6{
+      margin-top: 8px;
+      margin-bottom: 8px;
+}
+.pack-item-wrapper:hover{
+  background-color: #f1f0f0;
+}
+
+.item-remove{
+  text-align: center;
+
+  width: 100%;
+
+}
+
+.remove-item-image{
+  width:  200px;
+  margin: auto;
+  padding: 16px;
+}
+.remove-item-image img{
+  width: 100%;
+  object-fit: contain;
+}
+
+.rm-button span{
+  width: 63px;
+  height: 19px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #a70429;
+  line-height: 24px;
+padding-left: 10px;
+}
+
+.rm-button{
+  display: inherit;
+}
+.replace-button{
+  width: 62px;
+  height: 32px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #515970;
+  display: inherit;
+}
+
+.replace-button span{
+  padding: 10px;
+}
+
+.replace-button img{
+  width: 18px;
+  height: 18px;
+}
+
+
+.rm-repla-button{
+  width: 100%;
+  height: 30px;
+  padding-bottom: 20px;
+}
+
+.removeitembackdrop{
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  /*height: 100%;*/
+  z-index: 1001;
+  /*padding: 20px 20px 20px 20px;*/
+      top: 0;
+}
+.outer-item-wrapper{
+  max-width: 1144px;
+  height: 100vh;
+  margin: auto;
+}
+
+.suggestedwrapper{
+  height: 666px;
+  overflow-y: auto;
+
+  background-color: #f1f0f0;
+}
+
+
+.removeitemheader{
+  height: 71px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  margin: auto;
+  padding: 10px;
+}
+.removeitemheader > span{
+  line-height: 70px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #282b2d;
+  padding-left: 40px;
+}
+.closebutton{
+  display: inline-block;
+  float: right;
+  line-height: 70px;
+  padding-right: 29px;
+
+}
+.closebutton > span{
+  font-size: 14px;
+  font-weight: bold;
+  color: #515970;
+  padding-right: 20px;
+}
+
+.closebutton > img{
+  height: 17px;
+  cursor: pointer;
+}
+
+.image-item-remove{
+  margin: 10px;
+  width: 256px;
+  height: 320px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  text-align: center;
+  float: left;
+}
+
+.select-button{
+ text-align: center;
+ width: 150px;
+ height: 40px;
+ border-radius: 3px;
+ background-color: #515970;
+ line-height: 40px;
+ font-size: 14px;
+ font-weight: bold;
+ text-align: center;
+ color: #ffffff;
+ margin: auto;
+ margin-top: 20px;
+}
+
+.item-image-wrapper{
+  width:  100%;
+  padding-top: 20px;
+
+}
+
+
+.item-image-wrapper > img {
+  width: auto;
+   height: 128px;
+}
+.image-info{
+  padding: 20px 10px 20px 10px;
+}
+.image-info .name{
+  font-family: Helvetica;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.21;
+  color: #282b2d;
+}
+.image-info .sp{
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+  color: #a70429;
+}
+
+</style>
+
+<div class="removeitembackdrop" ng-show= "replaceItempage">
+  <div class = "outer-item-wrapper">
+    <div class= "removeitemheader">
+      <span>Replacement options for {{replaceitemname}}</span>
+      <div class= "closebutton">
+        <span>close</span>
+        <img src = "images/fill-20.png" ng-click = "closeReplace()"/>
+      </div>
+    </div>
+
+    <div class = "suggestedwrapper">
+      <div class="image-item-remove"  ng-repeat="rmItem in Items">
+          <div class="item-image-wrapper">
+            <img ng-src="{{paths}}/small/{{rmItem.images[0].file_name}}  " />
+          </div>
+          <div class="image-info" layout="row">
+            <div layout="column" flex="70">
+              <div class="name"> {{rmItem.name}}</div>
+            </div>
+            <div class="price" layout="column"  flex="30">
+              <span class="sp">{{ rmItem.sp1 > 0 ? (rmItem.sp1  | currency:"Rs ":0) : 'N.A'}}</span>
+            </div>
+          </div>
+          <button class="primary select-button" ng-click = "addItemtoPackage(rmItem)" >Select</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style media="screen">
+
+@media screen and (max-width:960px) {
+  .row.package > .image-wrapper{
+    width: 100%;
+  }
+
+  .row.package >  .package-info{
+    max-width: 600px;
+    margin: auto;
+    padding: 30px 10px;
+  }
+
+  .price-and-actions > div.price > span{
+            width: 100%!important;
+            }
+
+            .price-and-actions > .actions{
+              display: none!important;
+                position: fixed;
+                left: 0px;
+                bottom: 0px;
+          /* width: 172px; */
+                height: 54px;
+                border-radius: 8px;
+                width: 149px;
+                padding: 0;
+
+            }
+
+  .price-and-actions > .actions > button {
+        height: 54px!important;
+        border-radius: 8px;
+        z-index: 1000;
+        border: 1px solid #ffffff;
+        cursor: pointer;
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .price-and-actions{
+    text-align: center;
+  }
+}
+
+@media screen and (min-width:960px){
+    .row.package > .image-wrapper{
+              width: calc(100% - 484px);
+              max-height: 80vh;
+              text-align: center;
+            }
+
+            .package {
+              max-height: 80vh;
+            }
+            .row.package >  .package-info{
+              width: 450px;
+              padding: 0 17px;
+            }
+
+
+.package-contents > ul{
+  overflow-y:auto;
+  max-height:@{{windowHeight-158}}px;
+}
+}
+
+
+.package-info .title{
+  font-size: 16px;
+  text-align: center;
+  color: #454545;
+}
+
+.package-contents > ul{
+  overflow-y:auto;
+  list-style-type: none;
+  padding: 17px;
+  margin: 0;
+}
+.package-contents > ul > li{
+  padding: 12px 0;
+  margin: 5px 0;
+  cursor: pointer;
+}
+.package-contents > ul > li:hover{
+  background-color: #fff9ee;
+}
+
+.package-content{
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.package-content > .name{
+  width:calc(100% - 189px);
+  text-align: left;
+  color: #515970;
+  font-weight: 700;
+}
+.package-content .image-wrapper {
+  height: 70px;
+  width: 70px;
+}
+.package-content  > .price{
+  width: 84px;
+  text-align: right;
+  color: #a70429;
+}
+
+.price-and-actions{
+  padding: 15px 55px;
+}
+.price-and-actions > div{
+  padding: 15px;
+}
+.price-and-actions > div.price > label{
+  font-size: 14px;
+  font-weight: bold;
+  width: 100px;
+  color: #3e342e;
+}
+.price-and-actions > div.price > span{
+  color: #ff425a;
+  font-weight: bold;
+  font-size: 24px;
+  width: calc(100% - 105px);
+  text-align: center;
+}
+
+.price-and-actions > .actions > button{
+  height: 40px;
+}
+.actions > button:first-child{
+  width: 40px;
+  margin-right: 26px;
+}
+.actions > button:last-child{
+  width: calc(100% - 66px);
+}
+
+</style>
+
+<div class="container full-width" ng-cloak >
+  <div class="page-heading">
+    <div class="title">{{package.name}}</div>
+    <div class="subtitle">{{package.description}}</div>
+  </div>
+  <div class="row package"  layout-xs="column" layout-sm="column">
+    <div class="image-wrapper">
+      <div class="image-nav">
+        <button  class="material-icons" aria-label="Previous" ng-click="previousImage()">chevron_left</button>
+        <button class="material-icons" aria-label="Next" ng-click="nextImage()">chevron_right</button>
+      </div>
+      <ul class="image-list">
+        <li ng-repeat="image in package_images_tag track by $index">
+          <img ng-src="{{paths}}/small/{{image['file_name']}}" ng-click="setCurrentImage(image['file_name'])"   >
+        </li>
+      </ul>
+
+      <div class = "mask"  ng-repeat="tag in current_image.item" ng-click="show_desc = ! show_desc  " ng-show = "tag.item_id" style="top: {{tag.ycoord*windowHeight}}px; left: {{tag.xcoord * windowWidth }}px">
+        <div class = "item-descript" ng-show= "show_desc" >
+          <div class = "item-descript-inner">
+              <h6 > {{tag.item_name}}</h6>
+              <span > Rs {{tag.item_sp}}
+          </div>
+        </div>
+      </div>
+
+      <img dynamic-src="{{paths}}/large/{{presentImage}}  " class="package-image" resize/>
+
+      <img id='panorama-button' src="images/icons/360deg.png" onclick="showPanorama()" />
+      <div id="canvas">
+        <img src="images/icons/unmax.png" style="cursor: pointer;position:fixed;top: 80px;right: 5px;width: 55px;background: rgba(255, 255, 255, 0.5);padding: 5px;border-radius: 20px;" />
+      </div>
+
+    </div>
+    <div show-xs hide-gt-sm show-sm class="price-and-actions" style="padding-top:30px">
+      <div  class="price inline-content-wrapper">
+        <label>Starting From</label>
+
+        <span>Rs {{ totalamount>0?totalamount:package.price }}/- </span>
+
+      </div>
+    </div>
+    <div class="package-info">
+      <div class="package-contents">
+        <div class="title">Products In This Look</div>
+        <ul style="">
+          <li ng-repeat="item in package.package_item">
+          
+            <div ng-show="item['item_name']" ng-click="showremove = ! showremove" class="inline-content-wrapper package-content">
+              <div class="name">{{item['item_name']}}</div>
+              <div class="image-wrapper">
+              <!-- <img ng-src="{{paths}}/small/{{item.images[0].file_name}}" alt="" /> -->
+              <img ng-src="{{paths}}/small/{{item['file_name'].split(',')[0]}}" alt="" />
+              </div>
+              <div class="price">Rs {{item['sp']}} /-</div>
+            </div>
+            <div layout= "column" class="item-remove" ng-show = "showremove">
+              <div class="remove-item-image">
+                <!-- <img ng-src="{{paths}}/small/{{item.images[0].file_name}}  "/> -->
+                <img ng-src="{{paths}}/small/{{item['file_name'].split(',')[0]}}" alt="" />
+              </div>
+              <div layout = "row"  class="rm-repla-button">
+                <div class="rm-button" flex="50" layout="row" ng-click = "removeItem(item)" layout-align= "center center">
+                  <img src ="" />
+                  <span>Remove</span>
+                </div>
+
+                <div class="replace-button" ng-click = "replaceItem(item)" flex="50" layout="row" layout-align = "center center">
+                  <img src ="images/icons/17-512.png" />
+                  <span>Replace</span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <div ng-show="fd_furnishow" class="title">Fixed Furniture In This Look</div>
+          <li ng-repeat="fd in package.fd_furniture">
+          <div ng-show="fd['fxd_name']"    class="inline-content-wrapper package-content">
+          <input type="checkbox" ng-model="package.fd_funiture_selected[fd['fxd_id']]" ng-change="isfixedfurnitureSelected(fd)" checklist-value="{{fd}}" >
+            <div class="name">{{fd['fxd_name']}}</div>
+            <div class="price">Rs {{fd['price']}} /-</div>
+          </div>
+          </li>
+            <div ng-show="civil_workshow" class="title">Civil Works In This Look</div>
+          <li ng-repeat="civil in package.civil">
+          <div ng-show="civil['civil_work_name']"    class="inline-content-wrapper package-content">
+          <input type="checkbox" ng-model="package.civil_work_selected[civil['civil_id']]" ng-change="iscivilworksSelected(civil)" checklist-value="{{civil['civil_id']}}">
+            <div class="name">{{civil['civil_work_name']}}</div>
+
+            <div class="price">Rs {{civil['civil_price']}} /-</div>
+          </div>
+          </li>
+        </ul>
+
+
+
+      </div>
+
+      <div class="price-and-actions">
+        <div hide-xs hide-sm class="price inline-content-wrapper">
+          <label>Starting From</label>
+
+          <span>Rs {{ totalamount>0?totalamount:package.price }}/- </span>
+
+        </div>
+
+        <div class="actions row">
+          <button class="secondary bgsmall" ng-click="bookmark.package(package)"><img src="images/2@2x.png" /></button>
+          <button class="primary" ng-click = "buyPackage(package)">Buy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="footerbuttom">
+        <button class="primary" ng-click = "bookmark.package(package)"><img src="images/2@2x.png" /></button>
+        <button class="primary" ng-click = "buyPackage(package)">Buy</button>
+        <button class="primary" ng-click = "callback_minimized = !callback_minimized"> <img src="images/chat-icon@2x.png" /></button>
+</div>
+  <section>
+    <div ng-include='"/home/needhelp.html"'></div>
+  </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r77/three.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+var camera, scene, renderer;
+var isUserInteracting;
+var onMouseDownMouseX, onMouseDownMouseY, onMouseDownLon, onMouseDownLat;
+var lat, lon, phi, theta;
+
+var panorama_image;
+var container, mesh;
+var firstTime = false;
+function showPanorama(){
+  if(!firstTime){
+    isUserInteracting = false;
+    onMouseDownMouseX = 0;
+    onMouseDownMouseY = 0;
+  	lon = 0;
+    onMouseDownLon = 0;
+  	lat = 0;
+    onMouseDownLat = 0;
+  	phi = 0;
+    theta = 0;
+  	init();
+  	animate();
+    firstTime = true;
+  }
+  $('#canvas').addClass('active');
+  $('#package').removeClass('container full-width');
+}
+
+function init() {
+  $('#canvas > img').click(function(){
+    $('#canvas').removeClass('active');
+    $('#package').addClass('container full-width');
+  });
+	container = document.getElementById( 'canvas' );
+  console.log(container.offsetWidth);
+
+	camera = new THREE.PerspectiveCamera( 75, container.offsetWidth / container.offsetHeight, 1, 1100 );
+	camera.target = new THREE.Vector3( 0, 0, 0 );
+
+	scene = new THREE.Scene();
+
+	var geometry = new THREE.SphereGeometry( 500, 60, 40 );
+	geometry.scale( - 1, 1, 1 );
+
+
+  THREE.ImageUtils.crossOrigin = '';
+	var material = new THREE.MeshBasicMaterial( {
+		map: THREE.ImageUtils.loadTexture(panorama_image)//.load('panorama/panoramic_1.jpg')
+	} );
+
+	mesh = new THREE.Mesh( geometry, material );
+
+	scene.add( mesh );
+
+	renderer = new THREE.WebGLRenderer();
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( container.offsetWidth, container.offsetHeight );
+	container.appendChild( renderer.domElement );
+
+	container.addEventListener( 'mousedown', onDocumentMouseDown, false );
+	container.addEventListener( 'mousemove', onDocumentMouseMove, false );
+	container.addEventListener( 'mouseup', onDocumentMouseUp, false );
+	container.addEventListener( 'mousewheel', onDocumentMouseWheel, false );
+	container.addEventListener( 'MozMousePixelScroll', onDocumentMouseWheel, false);
+
+	//
+
+	container.addEventListener( 'dragover', function ( event ) {
+		event.preventDefault();
+		event.dataTransfer.dropEffect = 'copy';
+	}, false );
+
+	container.addEventListener( 'dragenter', function ( event ) {
+		container.body.style.opacity = 0.5;
+	}, false );
+
+	container.addEventListener( 'dragleave', function ( event ) {
+		container.body.style.opacity = 1;
+	}, false );
+
+	container.addEventListener( 'drop', function ( event ) {
+		event.preventDefault();
+		var reader = new FileReader();
+		reader.addEventListener( 'load', function ( event ) {
+			material.map.image.src = event.target.result;
+			material.map.needsUpdate = true;
+		}, false );
+		reader.readAsDataURL( event.dataTransfer.files[ 0 ] );
+		container.body.style.opacity = 1;
+	}, false );
+
+	//
+
+	container.addEventListener( 'resize', onWindowResize, false );
+
+}
+
+function onWindowResize() {
+
+  console.log(container.offsetWidth);
+
+	camera.aspect = container.offsetWidth / container.offsetHeight;
+	camera.updateProjectionMatrix();
+
+	renderer.setSize( container.offsetWidth, container.offsetHeight );
+
+}
+
+function onDocumentMouseDown( event ) {
+
+	event.preventDefault();
+
+	isUserInteracting = true;
+
+	onPointerDownPointerX = event.clientX;
+	onPointerDownPointerY = event.clientY;
+
+	onPointerDownLon = lon;
+	onPointerDownLat = lat;
+
+}
+
+function onDocumentMouseMove( event ) {
+
+	if ( isUserInteracting === true ) {
+
+		lon = ( onPointerDownPointerX - event.clientX ) * 0.1 + onPointerDownLon;
+		lat = ( event.clientY - onPointerDownPointerY ) * 0.1 + onPointerDownLat;
+
+	}
+
+}
+
+function onDocumentMouseUp( event ) {
+	isUserInteracting = false;
+}
+
+function onDocumentMouseWheel( event ) {
+  event.preventDefault();
+
+	// WebKit
+
+	if ( event.wheelDeltaY ) {
+
+		camera.fov -= event.wheelDeltaY * 0.05;
+
+	// Opera / Explorer 9
+
+	} else if ( event.wheelDelta ) {
+
+		camera.fov -= event.wheelDelta * 0.05;
+
+	// Firefox
+
+	} else if ( event.detail ) {
+
+		camera.fov += event.detail * 1.0;
+
+	}
+
+	camera.updateProjectionMatrix();
+
+}
+
+function animate() {
+	requestAnimationFrame( animate );
+	update();
+}
+
+function update() {
+
+	if ( isUserInteracting === false ) {
+
+		lon += 0.1;
+
+	}
+
+	lat = Math.max( - 85, Math.min( 85, lat ) );
+	phi = THREE.Math.degToRad( 90 - lat );
+	theta = THREE.Math.degToRad( lon );
+
+	camera.target.x = 500 * Math.sin( phi ) * Math.cos( theta );
+	camera.target.y = 500 * Math.cos( phi );
+	camera.target.z = 500 * Math.sin( phi ) * Math.sin( theta );
+
+	camera.lookAt( camera.target );
+
+	/*
+	// distortion
+	camera.position.copy( camera.target ).negate();
+	*/
+
+	renderer.render( scene, camera );
+
+}
+
+
+
+
+
+$(document).ready(function(){
+});
+</script>

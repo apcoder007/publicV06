@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="publicApp">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Café Indica - End to End Interior Solution for Delhi/NCR</title>
+    <base href="/">
+    <meta name="fragment" content="!">
+    <link rel="shortcut icon" type="image/x-icon" href="logo/logo_blank.png" />
+    <meta name="keywords" content="Interior Solution, Home decor, Furniture, Online Shopping India, online furniture shopping, Home Decor Online, Home Furnishing online">
+    <meta property="og:title" content="Café Indica - End to End Interior Solution for Delhi/NCR"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="http://www.cafeindica.co.in/images/logo/logo_blank.png"/>
+    <meta property="og:description" content=""/>
+    <link rel="canonical" href="http://www.cafeindica.co.in/"/>
+    <meta property="og:site_name" content="cafeindica.co.in"/>
+    
+    <link rel="stylesheet" href="angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/calendar.css" charset = "utf-8">
+    <link rel="stylesheet" href="/angularjs-slider/rzslider.min.css" media="screen" title="no title" charset="utf-8">
+
+    <!-- plugins js files -->
+    <script src="/jquery/jquery.min.js" charset="utf-8"></script>
+    <script src="/angular/angular.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.4.9/angular-cookies.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+    <script src="/angular-animate/angular-animate.min.js" charset="utf-8"></script>
+    <script src="/js/angular-material-calendar.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.12/angular-sanitize.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-messages.js" charset="utf-8"></script>
+    <script src="/angular-aria/angular-aria.min.js" charset="utf-8"></script>
+    <script src="/angular-material/angular-material.min.js" charset="utf-8"></script>
+    <script src="/angular-route/angular-route.min.js" charset="utf-8"></script>
+    <script src="/ng-infinite-scroll/ng-infinite-scroll.min.js" charset="utf-8"></script>
+    <script src="/angularjs-slider/rzslider.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r77/three.min.js" charset="utf-8"></script>
+
+    <!-- Custom js file -->
+    <script src="js/app.js" charset="utf-8"></script>
+    <script src="js/Providers.js" charset="utf-8"></script>
+    <script src="js/service.js" charset="utf-8"></script>
+    <script src="js/directive.js" charset="utf-8"></script>
+    <script src="js/controller.js" charset="utf-8"></script>
+    <script src="js/config.js" charset="utf-8"></script>
+</head>
+  <body ng-controller="TopLevelCtrl" layout="row" layout-align="center" 
+        ng-class="{'show-scroll':!callback_minimized}">
+
+    <div class = "backdrop-front" ng-show = "backDrop" >
+    </div>
+
+    <!-- Needhelp Part Include Center -->
+    <div ng-include='"views/needhelp.html"'></div>
+
+    <div ng-include='"views/popup.html"'></div>
+
+    <div layout="column" flex="100" flex-gt-sm="100" ng-hide="false">
+
+    <div ng-include='"views/header.html"'></div>
+
+      <div ng-view autoscroll="true" class="view" ng-class="{'bookmarks-active': bookmarks_active, 'reset': !bookmarks_active, 'with-small-toolbar': is_internal_page || show_small_header}"></div>
+
+    <div ng-include='"/views/footer.html"'></div>
+
+    </div>
+
+    <!-- <div id="bulk-orders-wrapper"><md-button class="md-raised" id="bulk-orders-btn" ng-click="showBulkOrderForm($event)">Bulk Order</md-button></div> -->
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-76655098-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+
+  </body>
+
+</html>

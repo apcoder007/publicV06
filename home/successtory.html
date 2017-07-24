@@ -1,0 +1,28 @@
+<div class="container" ng-controller="SuccestoryCtrl" sizeofwindow>
+    <div class="succes-story-wrapper" >
+        <div class="succes-story-text" > Success Stories </div>
+        <div class="succes-story-arrow" >
+          <div class="arrow"></div>
+        </div>
+    </div>
+ 
+    <div layout="row" flex="100"  class="ss-outerwrapper" layout-align = "center center" md-swipe-left="nextPage()"  md-swipe-right="prevPage()">
+    <div layout="column" layout-align="center center" ng-hide="noofitem == 3" flex="5"><md-button class="md-icon-button" ng-disabled="start==0" ng-click="prevPage()"><i class="material-icons">keyboard_arrow_left</i></md-button></div>
+    <md-card class="ss-wrapper" ng-repeat="story in stories.slice(start,  start + noofitem)  track by $index"  >
+      <div class= "ss-image">
+        <img ng-src="@{{story.design_image}}" alt="" />
+      </div>
+      <div class="ss-description">
+        <p align="justify">@{{story.reviews}}</p>
+        <div>
+          <img ng-src="@{{story.user_image}}" alt="" />
+        </div>
+        <div class="ss-name" >
+          <p align="right" style="color:black">@{{story.user_name}}</p>
+          <p align="right">@{{story.user_place}}</p>
+        </div>
+      </div>
+    </md-card>
+    <div layout="column" layout-align="center center" ng-hide="noofitem == 3" flex="5"><md-button class="md-icon-button" ng-disabled="stories.length == start + noofitem" ng-click="nextPage()"><i class="material-icons">keyboard_arrow_right</i></md-button></div>
+  </div>
+  </div>

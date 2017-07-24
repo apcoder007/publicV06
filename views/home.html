@@ -1,0 +1,38 @@
+<div class="md-whiteframe-1dp" id="carousel" change-header-on-scroll ng-cloak> <!-- Main screen image slider -->
+  <div ng-include='"home/carousel.html"'></div>
+</div>
+
+<!-- <div id="userflow-helper"></div> -->
+<section ng-cloak> <!--Navigation Buttons -->
+  <div ng-include='"/home/howitworksnew.html"'></div>
+</section>
+
+<section ng-cloak class="secondary">
+  <div ng-include='"home/browsbystyle.html"'></div>
+</section>
+
+<!-- <section layout="row" class="md-whiteframe-1dp section" ng-cloak>
+  @include('home.interactivequiz')
+</section> -->
+
+<section ng-cloak>
+  <div ng-include='"/home/panorama.html"'></div>
+</section> 
+
+
+<section ng-cloak>
+  <div ng-include='"/home/needhelp.html"'></div>
+</section>
+
+<section ng-cloak class="secondary">
+  <div ng-include='"/home/successtory.html"'></div>
+</section>
+
+
+<section ng-cloak>
+  <div ng-include='"/home/news.html"'></div>
+</section>
+
+
+<md-button class="md-icon-btn md-fab" id="scroll-to-top-btn" ng-click="scrollToTop()"><md-icon class="material-icons">keyboard_arrow_up</md-icon></md-button>
+<md-button class="md-icon-btn md-fab" id="scroll-to-next-btn" ng-click="scrollToNext()"><md-icon class="material-icons">keyboard_arrow_down</md-icon></md-button>

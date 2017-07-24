@@ -1,0 +1,116 @@
+<style media="screen">
+.item{
+  position: relative;
+  padding: 79px 0;
+}
+.item .price{
+  font-weight: bold;
+  padding: 23px 0;
+}
+.item .price > label{
+  font-size: 14px;
+  padding: 5px 0;
+  display: block;
+  color: #282b2d;
+}
+.item .price .mrp{
+  font-size: 16px;
+  color: #515970;
+  text-decoration: line-through;
+  margin-right: 10px;
+}
+.item .price .sp{
+  font-size: 20px;
+  text-align: right;
+  color: #ff425a;
+}
+.item ul.specifications{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item ul.specifications > li{
+  margin: 8px 0;
+}
+.item ul.specifications > li > label{
+  display: inline-block;
+  font-weight: bold;
+  font-size: 13px;
+  width: 120px;
+  color: #282b2d;
+}
+.item ul.specifications > li > span{
+  font-size: 14px;
+  color: 282b2d;
+}
+
+
+.item .actions > button{
+  width: 150px;
+  height: 40px;
+  margin-right: 27px;
+}
+.item .actions > button.active::after{
+  right: 7px;
+  width: 6px;
+  height: 14px;
+  top: 9px;
+}
+.item .actions >  button > img{
+  margin-right: 14px;
+}
+</style>
+
+<div class="container">
+  <div class="row item">
+    <div class="col-50">
+      <div class="image-wrapper">
+        <div class="image-nav">
+          <button ng-click="previousImage()" class="material-icons">chevron_left</button>
+          <button ng-click="nextImage()" class="material-icons">chevron_right</button>
+        </div>
+        <ul class="image-list">
+          <li ng-repeat="image in item.images track by $index">
+            <img ng-src="@{{paths}}/small/@{{image.file_name}}" ng-click="setCurrentImage(image)">
+          </li>
+        </ul>
+        <img dynamic-src="@{{paths}}/large/@{{current_image.file_name}}" class="item-image" imageonload/>
+      </div>
+    </div>
+
+    <div class="col-50">
+      <div class="info">
+        <div class="title">@{{item.name}}</div>
+        <div class="description">@{{item.description}}</div>
+        <div class="price">
+          <label>Price</label>
+          <div class="inline-content-wrapper">
+            <div class="mrp">₹ @{{item.mrp.value}}</div>
+            <div class="sp">₹ @{{item.sp.value}}</div>
+          </div>
+        </div>
+        <ul class="specifications">
+          <li><label>Color</label><span class="value">@{{item.color ? item.color  : 'N.A'}}</span></li>
+          <li><label>Material</label><span class="value">@{{item.material}}</span></li>
+        </ul>
+      </div>
+
+      <div class="actions row">
+        <button class="secondary" ng-click="bookmark.item(item)" ng-class="{active: bookmark.item_ids.indexOf(item.id) > -1}">
+          <img src="images/2@2x.png" /><span>Wishlist</span>
+        </button>
+        <button class="primary" ng-click="cart.toggleItem(item)" ng-class="{active: cart.item_ids.indexOf(item.id) > -1}">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  @include('home.needhelp')
+</section>
+
+
+<section class="secondary compact">
+    @include('home.bulk')
+</section>

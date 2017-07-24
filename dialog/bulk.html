@@ -1,0 +1,117 @@
+<md-dialog ng-cloak class="md-whiteframe-20dp">
+  <md-toolbar class="md-primary">
+    <div class="md-toolbar-tools">
+        <h5 class="md-subhead">Bulk Order<br /><small>Describe your requirements to get a call</small></h5>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon class="material-icons" aria-label="Close dialog">clear</md-icon>
+        </md-button>
+      </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <div ng-if="stage==1">Your request has been recieved with reference number @{{bulk.id}}</div>
+      <form name="bulk_orders_form" action="/orders/bulk" method="POST" ng-submit="submit($event)" ng-if="stage==0">
+        <div layout="row">
+          <md-input-container class="first" flex>
+            <input type="text" id="name" ng-model="bulk.name" placeholder="Name" md-autofocus />
+            <div ng-messages='errors.name' role="alert">
+              <div ng-message="errors.name[0]" class="error-message">@{{errors.name[0]}}</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="second" flex>
+            <input type="text" id="company" ng-model="bulk.company" placeholder="Company" />
+            <div ng-messages='errors.company' role="alert">
+              <div ng-message="errors.company[0]" class="error-message">@{{errors.company[0]}}</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container class="first" flex>
+            <input type="text" id="email" ng-model="bulk.email" placeholder="email" />
+            <div ng-messages='errors.email' role="alert">
+              <div ng-message="errors.email[0]" class="error-message">@{{errors.email[0]}}</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="second" flex>
+            <input type="text" id="mobile" ng-model="bulk.mobile" placeholder="Mobile" />
+            <div ng-messages='errors.mobile' role="alert">
+              <div ng-message="errors.mobile[0]" class="error-message">@{{errors.mobile[0]}}</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container flex>
+            <textarea ng-model="bulk.description" placeholder="Say some words. It helps us serving you faster" rows="3"></textarea>
+            <div ng-messages='errors.description' role="alert">
+              <div ng-message="errors.description[0]" class="error-message">@{{errors.description[0]}}</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <input id="upload" type="file" ng-model="bulk.file" style="display: none;" file-model="bulk.file">
+          <md-button class="md-raised" uploadfile><md-icon class="material-icons">attachment</md-icon> Attachment <small>(if any)</small></md-button>
+          <div flex></div>
+          <md-button class="md-raised md-primary" type="submit">Submit</md-button>
+        </div>
+      </form>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions ng-if="stage==1">
+    <md-button ng-click="cancel()" class="md-primary">OK</md-button>
+  </md-dialog-actions>
+</md-dialog>
+
+<style media="screen">
+[ng-message].error-message{
+  transition: all 5s;
+  opacity: 1 !important;
+  margin-top: 0 !important;
+}
+[ng-message].error-message.ng-enter{
+  background-color: black;
+}
+.md-dialog-container{
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+md-dialog{
+  border-radius: 0;
+  font-size: smaller;
+  width: 40vw;
+  min-width: 390px;
+  max-width:700px;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+}
+.md-dialog-content form md-input-container label{
+  /*font-size: smaller;*/
+}
+.md-dialog-content form .layout-row{
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.md-dialog-content form .layout-row md-input-container.first{
+  margin-right: 10px;
+}
+.md-dialog-content form .layout-row md-input-container.second{
+  margin-left: 10px;
+}
+.md-dialog-content form .layout-row button{
+  margin: 0;
+  padding: 4px;
+  border-radius: 0;
+  text-transform: none;
+}
+.md-dialog-content form .layout-row button .md-ripple-container{
+  border-radius: 0;
+}
+.md-dialog-is-showing{
+  /*top: 0px!important;*/
+  /*position: r;*/
+  /*max-height: none;*/
+  overflow: visible !important;
+}
+ 
+
+</style>

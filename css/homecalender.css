@@ -1,0 +1,484 @@
+.project_outerdiv{
+  max-width: 1280px;
+      margin: auto;
+}
+.project_timeline{
+  max-width: 920px;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.project_calendar{
+  
+  
+  right: 23px;
+  z-index: 1000;
+}
+
+@media only screen and (min-width: 1350px){
+  .project_calendar{
+    max-width: 360px;
+    position: fixed;
+    
+  }
+}
+
+@media only screen and (max-width: 1350px){
+  .project_calendar {
+    max-width: 330px;
+    position: fixed;
+    
+}
+}
+
+
+#project_details{
+ text-align: center;
+}
+
+.date{
+  text-align: center;
+  background-color: #515970;
+  color: #fff;
+}
+
+.project_pic{
+  width: 90%;
+  margin: auto;
+  padding: 10px;
+  max-height: 250px;
+}
+
+.project_pic > img{
+  object-fit: contain;
+  width: 100%;
+  max-height: 250px;
+}
+#project_details > button{
+  margin: auto;
+}
+.subbutton{
+  margin:auto;
+  height: 34px;
+  width: 91px;
+}
+.project_remarks{
+  width: 100%;
+  height: 100px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+  text-align: left;
+  overflow: auto;
+}
+
+.project_remarks > p {
+  padding: 10px;
+  text-align: justify;
+}
+#comment{
+  width: 99%;
+  height: 50px;
+}
+#userpanorama-button{
+
+}
+
+.project_accounts{
+  display: inline-flex;
+  padding: 30px 10px;
+}
+
+.project_accounts > button {
+    height: 41px;
+    width: 140px;
+    margin-right: 26px;
+}
+.panorama_pic{
+  width: 90%;
+  margin: auto;
+  padding: 10px;
+  max-height: 250px;
+
+}
+.panorama_pic > a > span{
+  position: absolute;
+  color: #ffffff;
+  top: 45%;
+  left: 0;
+  right: 0;
+  text-shadow: 0 3px 1px rgba(0,0,0,1);
+  }
+
+.panorama_pic > a {
+  display: block;
+  text-align: center;
+}
+
+.projectcommets{
+  max-height: 400px;
+  overflow: auto;
+  /*box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.3);*/
+  padding: 10px 0px;
+  margin-bottom: 10px;
+}
+
+.indicomment{
+  text-align: left;
+}
+.outerdiv{
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+}
+.primary-small{
+  background-color: #515970;
+  color: white;
+  height: 31px;
+
+  margin-left: 10px;
+}
+.enlargeimage{
+  position: fixed;
+  z-index: 1000;
+  width: 100vw;
+  height: calc(100vh - 70px);
+  background-color: #515970;
+  display: none;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+img.enlarg{
+  margin: auto;
+  padding-top: 48px;
+  max-width: 960px;
+  max-height: 80vh;
+}
+.displaynon{
+  display: block;
+  z-index: 1001;
+}
+
+img.expandimg{
+  width: 20px;
+  height: 20px;
+}
+.project_pic > img{
+  cursor: pointer;
+      transition: 0.3s ease;
+}
+
+.project_pic > img:hover{
+  opacity: 0.8;
+  transform: scale(1.01, 1.01);
+
+}
+
+.project_image  > img {
+  max-height: 400px;
+  max-width: 510px;
+  cursor: pointer;
+}
+
+.project_image > a > img {
+  max-height: 400px;
+  max-width: 510px;
+  width: 430px;
+}
+
+.name{
+  width: 30%;
+  text-align: left;
+  font-size: 12px;
+  padding-left: 10px;
+
+
+}
+
+.name > span:first-letter{
+  font-weight: bold;
+}
+
+.timestamp{
+  width: 70%;
+  text-align: right;
+  padding-right: 10px;
+  font-size: 12px;
+  opacity: 0.8;
+  padding-bottom: 10px;
+}
+
+.commentsnew >p {
+  text-align: justify;
+  font-size: 14px;
+}
+
+.project_image{
+
+}
+.enlargeimage{
+  transition-timing-function: ease-in;
+
+/* Quick on the way out */
+transition: 0.2s;
+}
+
+.timecomment span{
+  background-color: #515970;
+  color: #fff;
+  width: 100%;
+  font-size: 14px;
+}
+
+#project_detal{
+  width: 100px;
+  height: 50px;
+  background-color: #515970;
+  float:left;
+  text-align: center;
+}
+
+#project_detal span{
+  line-height: 50px;
+}
+
+
+.perticularday{
+  width: calc(50% - 40px);
+  height: 200px;
+  margin: 10px;
+  float: left;
+}
+
+.project_image > a > img:hover {
+  opacity: 0.7;
+
+}
+.detailsofproj{
+    width: calc(70% - 20px);
+    height: 180px;
+}
+
+#procomment{
+  width: 90%;
+  border-radius: 5px;
+
+}
+.dateofproj{
+  width: 30%;
+  margin-top: 31px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  background-color: #ff425a;
+  position: relative;
+  float: left;
+
+
+}
+
+.name{
+  width: 30%;
+  text-align: left;
+  font-size: 12px;
+  padding-left: 10px;
+
+
+}
+
+.name > span:first-letter{
+  font-weight: bold;
+}
+
+.timestamp{
+  width: 70%;
+  text-align: right;
+  padding-right: 10px;
+  font-size: 12px;
+  opacity: 0.8;
+  padding-bottom: 10px;
+}
+
+.commentsnew >p {
+  text-align: justify;
+  font-size: 14px;
+}
+.timestamp{
+  width: 70%;
+  text-align: right;
+  padding-right: 10px;
+  font-size: 12px;
+  opacity: 0.8;
+  padding-bottom: 10px;
+}
+.projectcommets{
+  max-height: 400px;
+  overflow: auto;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+.project-panorama{
+  line-height: 18px;
+}
+
+.calendarform{
+  height: 80px;
+}
+.projhint{
+  width: calc(70% - 40px);
+  float: left;
+  background-color: #fff;
+  margin-top: 10px;
+
+  height: 180px;
+  overflow-y: auto;
+}
+
+.container_project{
+  width: 1280px;
+}
+
+#test > * > div .IMG-2{
+  width: 28%;
+  height: 83%;
+  background-color: red;
+  text-align: center;
+  display: inline-block;
+}
+
+ .IMG-2 {
+
+    }
+
+.IMG-2 span{
+  font-family: Helvetica;
+  font-weight: bold;
+
+  color: #ffffff;
+}
+
+.dayofpro{
+  font-family: Helvetica;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+}
+.displaynon{
+  display: block!important;
+  z-index: 1001!important;
+}
+
+.dayofpron{
+  font-family: Helvetica;
+  font-weight: bold;
+  color: #fff;
+  height: 30px;
+  line-height: 30px;
+}
+.IMG-2 > .Linepro{
+  height: 3px;
+ border: solid 1px #979797;
+}
+
+.showprojectdetails{
+  width: 100%;
+  position: fixed;
+  height: 100vh;
+  background-color: rgba(81, 89, 112, 0.3);
+  text-align: center;
+  display: none;
+  z-index: 2000;
+  overflow-y: auto;
+}
+
+.showprojectdetails > div {
+  max-width: 960px;
+  margin: auto;
+  background-color: #fff;
+  z-index: 2002;
+}
+
+.project_detail_image {
+  width:100%;
+}
+.project_detail_image > img {
+  width:80%;
+}
+
+.userpanorama{
+
+}
+.userpanorama > h6{
+  text-align: center;
+}
+
+.loading{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+
+}
+
+
+.enlargeimage{
+  position: fixed;
+  z-index: 1000;
+  width: 100vw;
+  height: calc(100vh - 70px);
+  background-color: #515970;
+  display: none;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+img.enlarg{
+  margin: auto;
+  padding-top: 48px;
+  max-width: 960px;
+  max-height: 80vh;
+}
+#userpanorama-button{
+  width: 125px;
+  left: 0;
+  right: 0;
+ position: absolute;
+  margin: auto;
+  cursor: pointer;
+}
+#canvas{
+  background: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+
+  transition: all 0.5s;
+
+  z-index: -1;
+  opacity: 0;
+}
+
+.userpanorama{
+  height: 100%;
+  width: 100%;
+
+}
+
+.rmdisplay{
+
+  display: none;
+}
+
+
+#canvas.active{
+  z-index: 12;
+  opacity: 1;
+}
+
+#canvas > canvas{
+  width: inherit;
+  height: inherit;
+}

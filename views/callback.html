@@ -1,0 +1,167 @@
+<style media="screen">
+
+#request-callback{
+  position: fixed;
+  height: 70px;
+  bottom: 100px;
+  width: 50px;
+  right: 40px;
+  padding: 2px;
+  background: none;
+  z-index: 15;
+   transition: all 0.3s;
+}
+
+#request-callback .title, #request-callback .title  > *{
+  display: block;
+  height: inherit;
+  cursor: pointer;
+}
+
+.close-button{
+  display: none;
+}
+#request-callback *{
+ display: none;
+}
+
+#request-callback.callback {
+  height:100vh;
+  width:100%;
+  background-color:rgba(54, 46, 40, 0.85);
+  color:white;
+  right:0;
+  bottom: 0;
+  z-index:1000;
+  }
+
+  body{
+    overflow: hidden;
+  }
+  body.show-scroll{
+    overflow: auto;
+  }
+
+  #request-callback.callback *{
+   display: block;
+  }
+
+  #request-callback.callback form{
+   display: block;
+  }
+
+  #request-callback.callback .title{
+    display: none;
+  }
+
+  #request-callback.callback i.close-button{
+   color: white;
+   position: absolute;
+   right: 15px;
+   top: 15px;
+   cursor: pointer;
+ }
+ #request-callback.callback .md-title{
+   font-size: 27px;
+   line-height: 2em;
+   text-align: center;
+   letter-spacing: 1px;
+ }
+ #request-callback.callback .md-body-1{
+   letter-spacing: 0.6px;
+ }
+ #request-callback.callback form div{
+   margin: 10px;
+   height: 60px;
+   vertical-align: top;
+ }
+
+
+ #request-callback.callback form input{
+   border-radius: 7px;
+   padding: 0;
+   border: solid thin #130E0A;
+   height: 38px;
+   width: 255px;
+   padding-left: 2px;
+   color: #594331;
+ }
+ #request-callback.callback form div span.error{
+   font-size: 12px;
+   padding-top: 4px;
+   color: red;
+   letter-spacing: 0.5px;
+ }
+
+ #request-callback.callback form div span.error.ng-enter, #request-callback.callback form div span.error.ng-leave{
+   transition: all 0.3s;
+ }
+ #request-callback.callback form div span.error.ng-enter, #request-callback.callback form div span.error.ng-leave.ng-leave-active{
+   opacity: 0;
+ }
+ #request-callback.callback form div span.error.ng-leave, #request-callback.callback form div span.error.ng-enter.ng-enter-active{
+   opacity: 1;
+ }
+ #request-callback.callback form button{
+   background-color: #211811;
+   color: white;
+   border-radius: 4px;
+   padding: 0 8px 0 8px;
+   margin: 0;
+   height: 41px;
+ }
+ #request-callback.callback form button[disabled]{
+   color: white!important;
+ }
+ #request-callback.callback span.continue-button{
+   cursor: pointer;
+   color: white;
+   text-decoration: none;
+   border-bottom: solid 1px;
+   border-color: white;
+   padding-bottom: 1px;
+ }
+
+ #request-callback.callback form button{
+      margin-left: 35px;
+
+ }
+</style>
+
+@if($request_count == 1)
+
+<div id='request-callback' layout="column" layout-align="none center" class="callback"  ng-class="{'callback': callback_minimized }"  >
+
+@else
+<div id='request-callback' layout="column" layout-align="none center"    ng-class="{'callback': callback_minimized}" >
+@endif
+  <i class="material-icons close-button"  ng-click="callback_minimized = !callback_minimized  ">clear</i>
+  <i class="title" ng-click="callback_minimized = !callback_minimized"  ><img src="images/callback.png" /></i>
+  <div flex=10></div>
+  <p ng-show="callback.requested" class="md-title">  Thanks for your interest. Our expert will call you shortly.</p>
+  <p ng-show="!callback.requested" class="md-title">  Get Affordable Luxury Interiors for your Home<br /> Try the Café Indica experience </p>
+  <p ng-show="!callback.requested" class="md-body-1"> TALK TO US </p>
+  <p>
+    <form layout="row" ng-submit="requestCallback()" name=" "  novalidate ng-show="!callback.requested">
+      <div layout="column">
+        <input type="text" name="name" placeholder="Name" ng-model='callback.name' required autofocus>
+        <span class="error" ng-if='!requestCallbackForm.name.$valid && (requestCallbackForm.name.$touched || requestCallbackForm.$submitted)'>Name is required</span>
+      </div>
+      <div layout="column">
+        <input type="text" name="mobile" placeholder="Mobile Number" ng-model='callback.mobile' required pattern="[1-9][0-9]{9}">
+        <span class="error" ng-if='!requestCallbackForm.mobile.$valid && (requestCallbackForm.mobile.$touched || requestCallbackForm.$submitted)'>Please enter 10 digits mobile number</span>
+      </div>
+      <div layout="column">
+        <input type="text" name="city" placeholder="City" ng-model='callback.city'  >
+        <span class="error" ng-if='!requestCallbackForm.city.$valid && (requestCallbackForm.city.$touched || requestCallbackForm.$submitted)'>City is required</span>
+      </div>
+
+      <div>
+        <button class="md-button md-raised" type="submit" >Request a Callback</button>
+      </div>
+    </form>
+  </p>
+  <p>
+  <span ng-click="callback_minimized = !callback_minimized" class="continue-button">Continue to Café Indica</span>
+</p>
+</div>

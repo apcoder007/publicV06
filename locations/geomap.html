@@ -1,0 +1,71 @@
+<div class="container" ng-cloak layout = "row">
+
+ <div layout="row" layout-md="column" layout-align="center center" layout-wrap id="btnSection">
+   <md-button class="md-accent md-raised md-hue-1" onclick="mapInitiation()">All Sites</md-button>
+   <md-button class="md-accent md-raised md-hue-1" onclick="comSite()">Complete Sites</md-button>
+   <md-button class="md-accent md-raised md-hue-1" onclick="incomSite()">Running Sites</md-button>
+ </div>
+
+ <div  layout= "row" layout-align="center center" id="btndpdown">
+ <select id="dpDown">
+   <option value="delhi">Delhi NCR</option>
+   <option value="banglore">Banglore</option>
+   <option value="patna">Patna</option>
+   <option value="pune">Pune</option>
+ </select>
+</div>
+</div>
+
+    <div style="" ng-show="show_pro_image">
+
+      <div class="row project_map"  layout-xs="column" layout-sm="column">
+        <div class= "pro-closebutton" ng-click = "closeReplace()">
+          <img src = "images/general/close_icon.png" style="height:50px" />
+        </div>
+        <div class="image-wrapper-map">
+          <div class="image-nav">
+            <button  class="material-icons" aria-label="Previous" ng-click="">chevron_left</button>
+            <button class="material-icons" aria-label="Next" ng-click="">chevron_right</button>
+          </div>
+            <ul class="pro-image-list">
+              <li ng-repeat="image in pro_image track by $index">
+                <img src="https://storage.googleapis.com/cafeindica/thisisnotarandomstringinfactnoneis/{{image.path}}" ng-click="setCurrentImagepro(image)">
+              </li>
+            </ul>
+           <img src="https://storage.googleapis.com/cafeindica/thisisnotarandomstringinfactnoneis/{{current_pro_image}}" class="project-image-map" resize/>
+          </div>
+       </div>
+    </div>
+
+
+      <div layout="row" layout-wrap id="mapContain">
+        <div flex-xs="100" flex-sm="100" flex-md="70" flex="70" id="map"></div>
+        <div flex-xs="100" flex-sm="100" flex-md="30" flex="30" id="mapDetail">
+        <ul>
+          <li ng-repeat="x in myWelcome" style="list-style-type: none;">
+            <div ng-show="x.id">
+              <md-card md-theme="" class="info-{{ x.id }}" id="map-detail" infoid="{{x.pro_id}}" stat="{{x.status}}" md-theme-watch>
+              <md-card-title class="text-padd">
+                <md-card-title-text>
+                  <span class="md-headline" style="font-size:20px">{{ x.name }}</span>
+                  <span class="md-subhead" style="font-size:16px">{{ x.society }}</span>
+                </md-card-title-text>
+                <md-card-title-media class="img-margin">
+                  <div class="md-media-lg card-media"  ng-click="projectShow(x.pro_id)">
+                    <img src="https://storage.googleapis.com/cafeindica/thisisnotarandomstringinfactnoneis/{{x.path}}" style="cursor:pointer; width:150px; height:120px"/>
+                  </div>
+                </md-card-title-media>
+              </md-card-title>
+            </md-card>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+
+      <script src="js/geomap.js" type="text/javascript"> </script>
+      <link rel="stylesheet" href="/css/geomap.css" media="screen" title="no title">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js" charset="utf-8"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdZ3fwJtu5TZ-EHZQnX6Rj9Trg9R28vwY&callback=mapInitiation"></script>

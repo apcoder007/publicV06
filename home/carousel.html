@@ -1,0 +1,16 @@
+<div class="carousel-container" ng-controller="CarouselCtrl" ng-mouseenter="mouseEntered()" ng-mouseleave="mouseLeft()">
+  <div class="carousel-btn-div"  md-swipe-left="nextImage()"  md-swipe-right="previousImage()" style="z-index:12">
+    <md-button class="md-icon-button md-raised" aria-label="Previous" ng-click="previousImage()">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </md-button>
+    <md-button class="md-icon-button md-raised" aria-label="Next" style="float:right" ng-click="nextImage()">
+      <i class="material-icons">keyboard_arrow_right</i>
+    </md-button>
+  </div>
+  <div id="Brewing-Fabulous-Hom" layout="column" layout-align="center center">
+    <!-- <div id ="maintance"><marquee>Site is under maintenance</marquee></div> -->
+    <div id ="brewingtext">Brewing Fabulous Homes</div>
+    <div id="getting-started"> <a href="/#!/packages/Bedrooms" > Get Started </a> </div>
+  </div>
+  <img src="images/carousel/vintage_new.jpg"/ style="z-index:0">
+</div>

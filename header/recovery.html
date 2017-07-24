@@ -1,0 +1,65 @@
+<div layout="row" layout-align="center" >
+  <div class="container">
+    <h3> Find Your Account </h3>
+    <div ng-hide="recovery_step  " class="recovery-form">
+    <form name="recoveryForm" ng-submit="recoverySubmit()" novalidate>
+      <div layout = "column">
+        <div class="input-field">
+          <input type="email" name="email" ng-model="recovery.email" id="recovery-email" required ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" placeholder="  Email ">
+        </div>
+      </div>
+         <div layout="row" style = "padding-top:16px;height:30px;" class="recovery_button">
+           <button class="secondary" type="submit" >Submit</button>
+         </div>
+
+    </form>
+  </div>
+    <div  ng-show="recovery_step" class="verification-form">
+      <form name="recoveryVerification" ng-submit="verificationSubmit()" novalidate>
+        <div layout = "column">
+          <div class="input-field">
+            <input type="text" name="verification_code" ng-model="recovery.verification_code" id="recovery-verification-code"  placeholder="Verification Code">
+          </div>
+          <div class="input-field">
+            <input type="password" name="password" ng-model="recovery.new" id="recovery-password"  placeholder="Choose a password ">
+          </div>
+          <div class="input-field">
+            <input type="password"  name="password_confirmation" ng-model="recovery.confirmation" id="recovery-confirmaation-password"  placeholder="Re-type password">
+          </div>
+
+        </div>
+        <div layout="row" style = "padding-top:16px;height:30px;" class="recovery_button">
+            <button class="secondary" type="submit" >Submit</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<style media="screen">
+.recovery-form{
+  width: 120px;
+}
+#recovery-email{
+  width:  250px;
+  height: 42px;
+}
+#recovery-confirmaation-password{
+  width:  250px;
+  height: 42px;
+}
+
+#recovery-password{
+  width:  250px;
+  height: 42px;
+}
+#recovery-verification-code{
+  width:  250px;
+  height: 42px;
+}
+.recovery_button > button {
+  height: 34px;
+  width: 91px;
+}
+</style>

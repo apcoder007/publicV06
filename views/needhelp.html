@@ -1,0 +1,485 @@
+<style media="screen">
+#needhelpsmall{
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+
+  height: 54px;
+  border-radius: 8px;
+  background-color: #515970;
+  z-index: 1000;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.chatimage{
+  width: 24.2px;
+  height: 26px;
+  object-fit: contain;
+  background-color: #515970;
+}
+.chatimage img{
+  width: 24.2px;
+  height: 26px;
+  object-fit: contain;
+}
+.imagechatwrapper{
+border-right: 1px solid #ffffff;
+ height: 54px;
+     z-index: 1000;
+}
+.image-text{
+   /*border: 1px solid #ffffff;*/
+}
+.image-text span{
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+#needhelplarge{
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1000;
+  width: 360px;
+  height: 454px;
+  border-radius: 6px;
+  background-color: #ffffff;
+  display: none;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.nhlargewrapper{
+  padding: 10px;
+}
+
+.nhlarge-image{
+  width: 35.3px;
+  height: 38px;
+  background-color: #ffffff;
+}
+
+.nhlarge-image img{
+  object-fit: cover;
+  width: 100%;
+  cursor: pointer;
+}
+
+.nhlarge-text{
+  width: 100%;
+  height: 43px;
+  font-family: Helvetica;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  color: #a70429;
+}
+
+.nhlarge-arrow{
+  width: 100%;
+  margin: auto;
+  width: 30px;
+  height: 20px;
+}
+.request-a-callback{
+  width: 100%;
+  height: 19px;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  color: #000000;
+  padding: 15px 0px;
+}
+
+.request-a-callback-input{
+  width: 100%;
+  padding: 15px 0px;
+}
+
+.request-a-callback-input input{
+  width: 300px;
+  height: 40px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  box-shadow: inset 0 2px 0 0 #ececec;
+  border: solid 1px #cccccc;
+
+}
+
+.request-button{
+  padding: 15px 0px;
+
+}
+
+.request-button button{
+  width: 300px;
+  height: 40px;
+  border-radius: 3px;
+  background-color: #a70429;
+  color: #ffffff;
+}
+
+.req-a-call-wrapper{
+  padding-top: 100px;
+}
+
+.display-none {
+  display: block!important;
+}
+.hide-package{
+  display: none!important;
+}
+.nhlargewrapper img{
+  cursor: pointer;
+}
+
+#chatus{
+  position: fixed;
+  right: 185px;
+  bottom: 0px;
+  width: 80px;
+  height: 54px;
+  border-radius: 8px;
+  background-color: #515970;
+  z-index: 1000;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+$launcher-color: green;
+$launcher-size: 50px;
+$launcher-count-size: 20px;
+$launcher-count-color: #515970;
+
+.intercom-launcher {
+  backface-visibility: hidden;
+  background: $launcher-color;
+  border-radius: 50%;
+  bottom: 20px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06),
+              0 2px 32px rgba(0,0,0,0.16);
+  cursor: pointer;
+  font-family: Helvetica, Arial, sans-serif;
+  height: 0;
+  opacity: 0;
+  outline: 0;
+  position: fixed;
+  right: 20px;
+  transform: scale(0.5);
+  transform-origin: center;
+  transition: opacity 0.25s ease,
+              transform 0.25s ease;
+  width: 0;
+  z-index: 2147483000;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.intercom-booted {
+    height: $launcher-size;
+    opacity: 1;
+    transform: scale(1);
+    width: $launcher-size;
+  }
+
+  * {
+    cursor: pointer;
+  }
+}
+
+.intercom-unread-count {
+  backface-visibility: hidden;
+  background: $launcher-count-color;
+  border-radius: $launcher-count-size / 2;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.15);
+  box-sizing: border-box;
+  color: #fff;
+  font-size: $launcher-count-size * 0.6;
+  height: $launcher-count-size;
+  line-height: $launcher-count-size;
+  min-width: $launcher-count-size;
+  opacity: 0;
+  padding: 0 4px;
+  position: absolute;
+  right: -2px;
+  text-align: center;
+  top: -2px;
+  transform: scale(0.5);
+  transform-origin: center;
+  transition: opacity 0.15s ease,
+              transform 0.15s ease;
+
+  &.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.intercom-icon-open,
+.intercom-icon-close {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  bottom: 0;
+  position: absolute;
+  top: 0;
+  transition: transform 0.16s linear,
+              opacity 0.08s linear;
+  width: 80%;
+  right: 10px;
+}
+
+.intercom-icon-open {
+  background-image: url('data:image/png;base64,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');
+  background-position: 50% 60%;
+  background-size:  50% 60%;
+  background-color: #515970;
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+
+  .intercom-open & {
+    opacity: 0;
+    transform: rotate(30deg) scale(0);
+  }
+}
+
+.intercom-icon-close {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcBAMAAACAI8KnAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAIVBMVEUAAAD///////////////////////////////////8AAADPn83rAAAACXRSTlMACq47u/I8r7wWzHxoAAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAJJJREFUGNNdzzEKhDAQBdAvwtYWW9hbbSdCDrBnWBDS2Sx7A8HSKwgic1tNxj/jmirDC5P/UTSw01V4ri2nMr7xkg/HIAu+Qi6j9HhEcpB1gHFGGCuSTyQTlQ2Vg3ic4x49TVpzwcQXvI+3x/+r0p9eLAfyYhrIWNOSmfZkVlH2Kpm9Z+bJeh68oSYmnlGMnv1X7RZ2SET5id+LAAAAAElFTkSuQmCC');
+  background-size: 25%;
+  opacity: 0;
+  transform: rotate(-30deg);
+
+  .intercom-open & {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+</style>
+
+
+<div id = "needhelpsmall" ng-hide = "callback_minimized" ng-class="{'hide-package': packagepage}">
+  <div layout="row" layout-align = "center"  ng-click="callback_minimized = !callback_minimized  ">
+    <div class = "imagechatwrapper" flex-xs = "100" flex = "30" layout="row" layout-align="center center">
+    <div class= "chatimage">  <img src="general/chat-icon2x.png" /></div>
+  </div>
+    <div class ="image-text"  hide-xs flex = "70" layout = "row" layout-align= "center center">
+
+      <span> Need help? </span>
+
+    </div>
+  </div>
+
+
+</div>
+
+<div id = "needhelplarge"   ng-class = "{'display-none': callback_minimized }">
+  <div  layout = "column" layout-align = "center" >
+    <div class="nhlargewrapper" layout= "row" layout-align = "end" ng-click="callback_minimized = !callback_minimized  ">
+      <img src="/general/fill-20.png" />
+    </div>
+
+    <div layout = "row" layout-align = "center">
+      <div class = "nhlarge-image">
+        <img src = "/general/chat-icon-dark@2x.png" />
+      </div>
+    </div>
+
+    <div layout= "column" layout-align = "center">
+      <div class= "nhlarge-text">
+        Need Help?
+      </div>
+      <div class = "nhlarge-arrow"  layout-align= "center">
+        <div class="arrow"></div>
+      </div>
+    </div>
+    <div layout = "column" layout-align = "center"  class= "req-a-call-wrapper">
+      <form layout="column" ng-submit="requestCallback()" name="requestCallbackForm"  >
+        <div class="request-a-callback" >
+          Request a callback from us
+        </div>
+
+        <div class = "request-a-callback-input" layout = "row" layout-align = "center">
+          <input type="text" name="phnumber" ng-model="callback.mobile" value="" placeholder="                         Phone Number               ">
+        </div>
+
+          <div class = " request-button" layout = "row" layout-align = "center">
+            <button type="submit" name="button">Call me</button>
+          </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!--<div class="" id="chatus">
+  <a class="intercom-launcher" href="mailto:g9buhx38@incoming.intercom.io">
+    <div class="intercom-icon-close"></div>
+    <div class="intercom-icon-open"></div>
+    <span class="intercom-unread-count"></span>
+  </a> 
+
+  <script type="text/javascript" nonce="">
+
+  name = "Abhay Prakash";
+  email = "abhayp908@gmail.com";
+  user_id = "1075843";
+  created_at = "1489492655";
+
+  window.intercomSettings = {
+    app_id: "g9buhx38",
+    name: "Abhay Prakash",
+    email: "abhayp908@gmail.com",
+    user_id: "1075843",
+    created_at: "1489492655",
+    hide_default_launcher: true
+  };
+
+(function(){
+    var w=window;
+    var ic=w.Intercom;
+    if(typeof ic==="function"){
+      ic('reattach_activator');
+      ic('update',intercomSettings);
+    }else{
+      var d=document;
+      var i=function(){i.c(arguments)};
+      i.q=[];
+      i.c=function(args){i.q.push(args)};
+      w.Intercom=i;
+      function l(){
+      var s=d.createElement('script');
+      s.type='text/javascript';
+      s.async=true;
+      s.src='https://widget.intercom.io/widget/g9buhx38';
+      var x=d.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s,x);
+    }
+    if(w.attachEvent){
+      w.attachEvent('onload',l);
+    }else{
+      w.addEventListener('load',l,false);
+    }}})()
+
+    const launcher = document.querySelector('.intercom-launcher');
+    const unreadCount = launcher.querySelector('.intercom-unread-count');
+
+    window.Intercom('boot', {
+    app_id: 'g9buhx38',
+    name: "Cafe Indica",
+    email: "tech.cafeindica@gmail.com",
+    user_id: "1075843",
+    created_at: "1489492655",
+    custom_launcher_selector: '.intercom-launcher'
+    });
+
+    // Register callbacks
+    window.Intercom('onShow', () =>
+      launcher.classList.add('intercom-open'));
+
+    window.Intercom('onHide', () =>
+      launcher.classList.remove('intercom-open'));
+
+    window.Intercom('onUnreadCountChange', count => {
+      unreadCount.textContent = count;
+      if (count) {
+        unreadCount.classList.add('active');
+      } else {
+        unreadCount.classList.remove('active');
+      }
+    });
+
+    function eventExample(event, metadata) {
+  if (!(metadata)){
+    Intercom('trackEvent', event);
+  } else {
+    Intercom('trackEvent', event, metadata);
+  }
+  return(true) //check to see if code was correctly copied
+}
+
+function updateUser(name, email, userId, created_at) {
+  window.Intercom('update', { "name" : name, "email" : email, "user_id" : userId, "created_at" : created_at});
+  return(true) //check to see if code was correctly copied
+}
+
+function signOutExample() {
+  window.Intercom('shutdown');
+  return(true) //check to see if code was correctly copied
+}
+
+function toggle(element) {
+    document.getElementById(element).style.display = (document.getElementById(element).style.display == "none") ? "" : "none";
+}
+
+// Initialize Intercom
+
+Intercom('onShow', function() {
+  Intercom('show');
+  Intercom('showMessages');
+  Intercom('showNewMessage');
+  //Intercom('showNewMessage', 'pre-populated content');
+ });
+
+
+
+  Intercom('onUnreadCountChange', function(unreadCount) {
+  Intercom('showMessages', unreadCount);
+});
+
+
+// Wait for Intercom to boot (max 30 seconds)
+const timeout = setTimeout(() => clearInterval(interval), 30000);
+const interval = setInterval(() => {
+  if (window.Intercom.booted) {
+    // Add class to show the launcher
+    launcher.classList.add('intercom-booted');
+
+    clearInterval(interval);
+    clearTimeout(timeout);
+  }
+}, 100);
+
+</script>
+<script>
+  /*window.intercomSettings = {
+    app_id: "vtu4gtqm"
+  };*/
+</script>
+<script>
+/*(function(){
+  var w=window;
+  var ic=w.Intercom;
+  if(typeof ic==="function"){ic('reattach_activator');
+  ic('update',intercomSettings);
+}else{
+  var d=document;
+  var i=function(){i.c(arguments)};
+  i.q=[];
+  i.c=function(args){i.q.push(args)};
+  w.Intercom=i;function l(){
+    var s=d.createElement('script');
+    s.type='text/javascript';
+    s.async=true;
+    s.src='https://widget.intercom.io/widget/vtu4gtqm';
+    var x=d.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s,x);
+  }
+  if(w.attachEvent){
+    w.attachEvent('onload',l);
+  }else{
+    w.addEventListener('load',l,false);
+  }}})()
+
+  window.Intercom('boot', {
+    app_id: "vtu4gtqm"
+  }); */
+  </script>
+
+</div>

@@ -1,0 +1,30 @@
+<link rel="stylesheet" type="text/css" href="css/accounts.css">
+
+<div layout="row" layout-align="center" >
+  <div class="container">
+    <div class="project-cost">
+      <h5>Project</h5>
+      <span>Estimated Project cost  : {{project_cost[0].amount.toLocaleString()}} ₹ </span>
+    </div>
+    <div class="project-payment">
+    <table style="width:100%;text-align:center;">
+      <tr class="project-tr">
+        <th width="10%" >Installment</th>
+        <th width="20%">Amount</th>
+        <th width="10%">Status</th>
+        <th width="20%">Due </th>
+        <th width="20%">Paid</th>
+        <th width="20%"> </th>
+      </tr>
+      <tr class="project-td" ng-if = "payment.status != 'disabled'" ng-repeat = "(key, payment) in payments track by $index ">
+        <td width="10%">{{$index+1}}</td>
+        <td width="20%">{{payment.amount}}</td>
+        <td width="10%" style="text-transform:capitalize;">{{payment.status}}</td>
+        <td width="20%">{{payment.due_date}} </td>
+        <td width="20%">{{payment.paid_on}} </td>
+        <td width="20%" ng-if = "payment.status != 'paid'"><button class="primary" style="height:40px;width:120px" ng-click="goToaddress(payment)">Paynow</button> </td>
+      </tr>
+    </table>
+  </div>
+  </div>
+</div>

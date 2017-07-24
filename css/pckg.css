@@ -1,0 +1,185 @@
+@font-face {
+  font-family: allura;
+  src: url('fonts/Allura-Regular.ttf');
+}
+body{
+  height: auto;
+  font-family: allura;
+}
+md-toolbar{
+  background-color: rgba(154,146,141,1) !important;
+}
+section{
+  margin-top:1rem;
+}
+
+
+
+#package-screen-banner{
+  position: relative;
+  z-index: 11;
+  color: #443427;
+  width: 100%;
+  font-family: allura;
+  font-size: 60px;;
+  animation-duration: 3s;
+  animation-name: slidedown;
+}
+#package-screen-banner div{
+
+}
+
+.mdcardpack{
+  overflow:hidden;
+}
+
+.md-card-image{
+  /*height:300px;*/
+  transition: all .5s ease-in-out;
+  height: 50vh;
+  overflow:hidden;
+  /*transform: scale(1.1);*/
+}
+h3 {
+    text-align: right;
+    padding-top: -1rem;
+}
+
+h2 {
+  text-align: left;
+}
+.colmn{
+  height: 140vh;
+}
+
+.mdcardpackage{
+  width: 1080px;
+  height: 475px;
+  overflow: hidden;
+}
+/*md-card-image-package*/
+
+.md-card-image:hover{
+  overflow: hidden;
+  transform: scale(1.04);
+}
+.packages-name {
+  /*position:absolute;*/
+  overflow: visible;
+  line-height: 0.2rem;
+}
+
+.packages-name-price{
+  line-height: 0rem;
+}
+
+.md-card-image-package{
+  position: relative;
+   width:55vw;
+   height:auto;
+}
+
+.packages-name-price{
+  line-height: none;
+}
+.md-card-image-package1{
+  min-width: 80vw;
+height: auto;
+}
+
+.md-card-image-furniture{
+  transition: all .5s ease-in-out;
+  overflow:hidden;
+  height: 400px;
+  width: 100%;
+}
+.md-card-image-furniture:hover{
+  overflow: hidden;
+  transform: scale(1.04);
+}
+
+
+
+
+#package-screen-banner{
+  position: relative;
+  z-index: 11;
+  color: #443427;
+  width: 100%;
+  font-family: allura;
+  font-size: 60px;;
+  animation-duration: 3s;
+  animation-name: slidedown;
+}
+#package-screen-banner div{
+
+}
+
+.mdcardpack{
+  overflow:hidden;
+}
+
+.md-card-image{
+  /*height:300px;*/
+  transition: all .5s ease-in-out;
+  height: 50vh;
+  overflow:hidden;
+  /*transform: scale(1.1);*/
+}
+h3 {
+    text-align: right;
+    padding-top: -1rem;
+}
+
+h2 {
+  text-align: left;
+}
+.colmn{
+  height: 140vh;
+}
+
+.mdcardpackage{
+  width: 1080px;
+  height: 475px;
+  overflow: hidden;
+}
+/*md-card-image-package*/
+
+.md-card-image:hover{
+  overflow: hidden;
+  transform: scale(1.04);
+}
+.packages-name {
+  /*position:absolute;*/
+  overflow: visible;
+  line-height: 0.2rem;
+}
+
+.packages-name-price{
+  line-height: 0rem;
+}
+
+.md-card-image-package{
+  position: relative;
+   width:55vw;
+   height:auto;
+}
+
+.packages-name-price{
+  line-height: none;
+}
+.md-card-image-package1{
+  min-width: 80vw;
+height: auto;
+}
+
+.md-card-image-furniture{
+  transition: all .5s ease-in-out;
+  overflow:hidden;
+  height: 400px;
+  width: 100%;
+}
+.md-card-image-furniture:hover{
+  overflow: hidden;
+  transform: scale(1.04);
+}

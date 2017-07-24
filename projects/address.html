@@ -1,0 +1,29 @@
+<div layout="row" layout-align="center" >
+  <div class="container">
+    <div class="order-address row" style="padding-top:0px"sizeofwindow>
+      <div class="column-50 right">
+        <form layout="column" ng-submit="projectpayment()" novalidate>
+          <div class="address">
+            <h4>Billing Address</h4>
+            <input type="text" id="name" name="name" ng-model="payment.billing.name"    placeholder=" Full Name ">
+            <input type="text"  type="text" id="mobile" name="mobile" ng-model="payment.billing.mobile"   placeholder="  Phone ">
+            <input type="text"  id="email" name="email" ng-model="payment.billing.email"    placeholder="  Email ">
+            <textarea id="address" name="address" ng-model="payment.billing.address"     placeholder="Address"></textarea>
+            <div layout="row" class="city-state">
+              <input type="text" id="city" name="city" ng-model="payment.billing.city"   placeholder="City" >
+              <div flex="10"></div>
+              <input type="text" id="state" name="state" ng-model="payment.billing.state"   placeholder="State" >
+            </div>
+            <input type="text" id="PIN" name="PIN" ng-model="payment.billing.pin"    placeholder="Pin" >
+
+        </div>
+        </form>
+      </div>
+    </div>
+    <div class="page-actions">
+      <button class="primary" ng-click="goPayments()">Back to Accounts</button>
+      <button class="secondary" ng-click="projectpayment()">Confirm & Pay</button>
+    </div>
+
+  </div>
+</div>

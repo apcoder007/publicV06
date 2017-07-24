@@ -1,0 +1,22 @@
+td{
+    height: 76px;
+    text-align: -webkit-center;
+}
+.project-cost{
+  padding-top: 50px;
+  height: 109px;
+}
+.project-payment{
+  border-radius: 4px;
+  height: 600px;
+  overflow-y: auto;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+
+}
+.project-tr{
+  height: 50px;
+  background-color: #f1f1f2;
+}
+.project-td{
+  background-color: #fff;
+}

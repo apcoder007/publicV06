@@ -1,0 +1,12 @@
+[
+  { "image":"images/how/welcome.jpg", "name":"Welcome to Café Indica", "description":"Put down all your worries and pick up a cup of coffee to enjoy the Café Indica experience"},
+      { "image":"images/how/quiz.jpg", "name":"Style Quiz" , "description":"Take a style quiz to better understand your personal style"},
+      { "image":"images/how/browse.jpg", "name":"Browse", "description": "Browse through styles and packages, save what you love"},
+      { "image":"images/how/book_designer.jpg", "name":"Book a Designer", "description":"Talk to our expert designers to understand the naunces of interior design"},
+      { "image":"images/how/shortlist.jpg", "name":"Shortlist", "description": "Shortlist the designs and furniture you love best"},
+      { "image":"images/how/visualize.jpg", "name":"Visualize", "description": "Get 3D views of the final design so that you can be 100% sure before placing the order"},
+      { "image":"images/how/place_order.jpg", "name":"Place Order", "description":"Place the final order after finalizing the specifications"},
+      { "image":"images/how/sit_back.jpg", "name": "Sit Back", "description":"Sit back! ...Your order is being processed and your home will be ready in 45 days"},
+      { "image":"images/how/movein.jpg", "name": "Move in", "description": "Move into your fantabulously delicious home, Coffee, anyone ???"}
+
+]

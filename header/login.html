@@ -1,0 +1,104 @@
+<style type="text/css">
+  #regButton .ng-invalid{
+    border: 2px solid #e74c3c;
+  }
+  .upper_logindetails .input-field input{
+    background-color: white !important;
+    height: 35px;
+  }
+</style>
+
+<div id="login-div" ng-show = "login_window" layout="row" layout-align = "center center" ng-controller="loginCtrl" ng-cloak>
+  <div flex = "70" id="login-outterwrapper" layout="column" flex-xs = "100">
+      <div class="close-button" ng-click="closeWindow()  "><i class="material-icons close-button"  >clear</i></div>
+      <div layout = "row" layout-align="center " layout-xs="column" layout-align-xs="center  center ">
+        <div layout = "column" class="upper_logindetails login-border" >
+          
+          <form name="loginForm" ng-submit="submitLogin2(loginForm)" ng-show="login_resistration"  novalidate>
+            <div class="prompt">
+              <span>New to Café Indica?</span>
+              <span ng-click="login_resistration = !login_resistration">register here</span>
+            </div>
+            <p>Login with your email address</p>
+            <div layout="column">
+              <div class="input-field">
+                <input type="text"  class="login_details"  name="email" ng-model="user.email" id="login1-email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" placeholder="Email"  required autofocus>
+                <span class="error" ng-if="!loginForm.email.$valid && (loginForm.email.$touched || loginForm.$submitted)">Provide a valid email</span>
+                <span class="error" ng-if="errstate == 2 || errstate == 0 ">Provide a valid email</span>
+              </div>
+              <div class="input-field">
+                <input type="password" class="login_details"  name="password" ng-model="user.password" id="login2-password" placeholder="Password">
+                <span class="error" ng-if="errstate == 3">Wrong Password</span>
+              </div>
+            </div>
+            <input type="checkbox"  checked><span>Remember me  </span>
+            <div layout="row" style = "padding-top:16px">
+              <button class="secondary" type="submit" ng-disabled="p_login1">{{ p_login1 ? 'Please Wait...' : 'Login' }}</button>
+              <img ng-if="dataLoading" src="images/loading.gif" width="40px" height="40px" />
+            </div>
+          </form>
+
+          <form name="Resistrationform" ng-submit="Resistration(Resistrationform)" layout-padding layout="column" ng-show="!login_resistration " novalidate>
+            <div class="prompt">
+              <span>Already have a Café Indica account?</span>
+              <span ng-click="login_resistration = !login_resistration">Login here</span>
+            </div>
+            <!-- <p>Register with your email address</p> -->
+            <div layout = "column">
+              <div class="input-field">
+                <input name="name" type="text" ng-model="user.name" id="register-name" required placeholder="  Name" class="validate">
+              </div>
+              <div class="input-field">
+                <input type="email" name="email" ng-model="user.email" id="register-email" required ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" placeholder="Email" class="validate">
+                <span class="error" ng-show="Resistrationform.email.$error.email">Your email is invalid.</span>
+              </div>
+              <div class="input-field">
+                <input type="password" name="password" ng-model="user.password" id="register-password" name = "password" placeholder="Choose a password" required ng-minlength='6'>
+                <span class="error" ng-show="Resistrationform.password.$error.minlength || form.password.$invalid">Your password must be at least 6 characters.</span>
+              </div>
+              <div class="input-field">
+                <input type="password"  name="password_confirmation" ng-model="user.password_confirmation" id="register-password" placeholder="re-type the password" ng-minlength='6'>
+                <span class="error" ng-if="matchpass">password doesn't match.</span>
+              </div>
+            </div>
+            <div class="subscribe">
+              <input type="checkbox" checked>
+              <span>Subscribe to our newsletter?</span>
+            </div>
+            <div layout="row" style = "padding-top:16px">
+              <button class="secondary" id="regButton" type="submit" ng-disabled="Resistrationform.$invalid">Register</button>
+            </div>
+          </form>
+         </div>
+
+        <div layout= "column" class="upper_logindetails">
+          <p>Quick Login</p>
+          <div layout= "column" >
+            <div style="padding-bottom:21px" >
+              <div class="social-login social-login-fb" layout="row">
+                <a href="/facebook/redirect">
+                <i class="socicon-facebook"></i>
+                  <span>Login using facebook</span>
+                </a>
+              </div>
+            </div>
+            <div class="social-login social-login-gplus" layout="row">
+              <!-- <a href="/google/redirect"> -->
+              <a href="/login">
+                <i class="socicon-googleplus"></i>
+                  <span>Login using google</span>
+              </a>
+            </div>
+          </div>
+          <div class="account-recovery">
+            <a href="#!/login/account-recovery">
+            <span >Forgotten account ?</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+</div>
+
+</div>

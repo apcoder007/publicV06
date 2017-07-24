@@ -1,0 +1,40 @@
+<div class="popup-content" ng-controller="RequestCtrl">
+  <md-toolbar class="md-primary">
+    <div class="md-toolbar-tools">
+        <h5 class="md-subhead">Buy this item<br /><small>Submit this form to get a callback from us</small></h5>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="close()">
+          <md-icon class="material-icons" aria-label="Close dialog">clear</md-icon>
+        </md-button>
+      </div>
+  </md-toolbar>
+  <md-content>
+    <div ng-show="requested" class="md-body-1">Thanks for your interest. We will you back shortly.</div>
+    <form name="itemRequestForm" ng-submit="request.item()" ng-show="!requested" novalidate>
+      <div layout="row">
+        <md-input-container flex>
+          <input type="text" name="name" ng-model="item.name" placeholder="Name" autofocus required />
+          <span class="error" ng-if="!itemRequestForm.name.$valid && (itemRequestForm.name.$touched || itemRequestForm.$submitted)">Name is required</span>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container class="first" flex>
+          <input type="email" required name="email" ng-model="item.email" placeholder="email" />
+          <span class="error" ng-if="!itemRequestForm.email.$valid && (itemRequestForm.email.$touched || itemRequestForm.$submitted)">Provide a valid email</span>
+        </md-input-container>
+        <md-input-container class="second" flex>
+          <input type="text" name="mobile" ng-model="item.mobile" placeholder="Mobile" required pattern="[1-9][0-9]{9}" />
+          <span class="error" ng-if="!itemRequestForm.mobile.$valid && (itemRequestForm.mobile.$touched || itemRequestForm.$submitted)">Please enter 10 digit mobile number</span>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex>
+          <textarea ng-model="item.description" placeholder="Say some words. It helps us serving you faster" rows="3"></textarea>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-button class="md-raised md-primary" type="submit" ng-disabled="!itemRequestForm.$valid">Submit</md-button>
+      </div>
+    </form>
+  </md-content>
+</div>
